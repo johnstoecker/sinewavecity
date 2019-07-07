@@ -8,6 +8,30 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>recharge = 0;
+show_debug_message(xstart);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,17 +49,49 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var left_axis = gamepad_axis_value(0, gp_axislh);
-var right_axis = gamepad_axis_value(0, gp_axisrh);
+            <string>//12 peaks, if its past the 3rd peak, set to 0
+//if its before the 3rd peak, set to 0
 
-if ((left_axis &lt; -0.1 || left_axis  &gt; 0.1) &amp;&amp; (x &gt; 0 || left_axis &gt; 0) &amp;&amp; (x &lt; window_get_width() || left_axis &lt; 0))
+if (x&gt;=xstart+sprite_width/12) {
+  x = xstart;
+}
+else if (x&lt;=xstart-sprite_width/12) {
+  x= xstart;
+}
+
+var left_axis = gamepad_axis_value(0, gp_axislh);
+var right_axis = gamepad_axis_value(0, gp_axisrh);
+dead_zone = 0.05;
+
+//if ((left_axis &lt; -0.05 || left_axis  &gt; 0.05) &amp;&amp; (x &gt; 0 || left_axis &gt; 0) &amp;&amp; (x &lt; window_get_width() || left_axis &lt; 0))
+if ((left_axis &lt; -dead_zone || left_axis  &gt; dead_zone))
 {
-motion_set(1, 30 * left_axis);
+
+//var hlaxis = gamepad_axis_value(0, gp_axislh);
+//var vlaxis = gamepad_axis_value(0, gp_axislv);
+direction = point_direction(0, 0, left_axis, 0);
+
+speed = point_distance(0 ,0, left_axis, 0) * 15;
+
+
+
+//motion_set(1, 30 * left_axis);
 } else {
 motion_set(1, 0);
 }
+//0.3--0.9
 image_xscale = right_axis/3 + 0.6;
 
+recharge += 1;
+
+if (gamepad_button_value(0, gp_shoulderrb) &gt; 0.5 &amp;&amp; recharge &gt; 15) {
+  var sine_width = sprite_width/12;
+  var offset = x+sine_width/4 + image_xscale * 6;
+  for(var i=0; i&lt;12; i++) {
+    instance_create(offset + i*sine_width,100,obj_railgun);
+  }
+  recharge = 0;
+}
 </string>
           </argument>
         </arguments>

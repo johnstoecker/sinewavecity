@@ -15,9 +15,20 @@
     <sprite>sprites\spr_laser_yellow</sprite>
     <sprite>sprites\spr_sine_vert</sprite>
     <sprite>sprites\spr_laser_yellow_sideways</sprite>
+    <sprite>sprites\spr_laser_nullify</sprite>
+    <sprite>sprites\spr_mayor</sprite>
+    <sprite>sprites\spr_bot</sprite>
+    <sprite>sprites\spr_speech</sprite>
+    <sprite>sprites\spr_sine_wave_city</sprite>
+    <sprite>sprites\spr_gamepad_diagram</sprite>
+    <sprite>sprites\spr_wavelord</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\font0</font>
+    <font>fonts\font1</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_sine</object>
     <object>objects\obj_sin_vert</object>
@@ -27,6 +38,16 @@
     <object>objects\obj_score</object>
     <object>objects\obj_controller</object>
     <object>objects\obj_controller_cross</object>
+    <object>objects\obj_railgun</object>
+    <object>objects\obj_mayor</object>
+    <object>objects\obj_bot</object>
+    <object>objects\object11</object>
+    <object>objects\obj_sine_wave_city</object>
+    <object>objects\obj_speech_mayor</object>
+    <object>objects\obj_controller_intro</object>
+    <object>objects\obj_gamepad_diagram</object>
+    <object>objects\obj_wavelord</object>
+    <object>objects\obj_speech_right</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tml_intro</timeline>
@@ -37,6 +58,7 @@
   <rooms name="rooms">
     <room>rooms\room0</room>
     <room>rooms\room_cross</room>
+    <room>rooms\room_intro</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
@@ -44,6 +66,6 @@
   <TutorialState>
     <IsTutorial>-1</IsTutorial>
     <TutorialName>C:\Users\Barbar Jinks\AppData\Local\GameMaker-Studio\tutorials\Coding_BreakOut\</TutorialName>
-    <TutorialPage>8</TutorialPage>
+    <TutorialPage>12</TutorialPage>
   </TutorialState>
 </assets>

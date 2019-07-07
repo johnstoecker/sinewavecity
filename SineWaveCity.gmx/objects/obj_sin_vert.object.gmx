@@ -28,7 +28,7 @@
             <string>var left_axis = gamepad_axis_value(0, gp_axislv);
 var right_axis = gamepad_axis_value(0, gp_axisrv);
 
-if ((left_axis &lt; -0.1 || left_axis  &gt; 0.1) &amp;&amp; (y &gt; -100 || left_axis &gt; 0) &amp;&amp; (y &lt; window_get_height() || left_axis &lt; 0))
+if ((left_axis &lt; -0.05 || left_axis  &gt; 0.05) &amp;&amp; (y &gt; -100 || left_axis &gt; 0) &amp;&amp; (y &lt; window_get_height() || left_axis &lt; 0))
 {
 motion_set(270, 30 * left_axis);
 } else {
