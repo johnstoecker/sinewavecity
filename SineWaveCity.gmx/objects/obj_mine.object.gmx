@@ -3,7 +3,7 @@
   <spriteName>spr_laser_yellow</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -89,36 +89,12 @@
           <argument>
             <kind>1</kind>
             <string>if (image_speed==0) {
-  score -= 5;
+  score -= 15;
   image_speed=1;
   alarm[0]=9;
 }
 
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>101</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_move</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>000010000</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -145,6 +121,7 @@
   image_speed=0.25;
   image_index=10;
   alarm[0]=8;
+  global.railgun_recharge += 1;
 }
 
 </string>

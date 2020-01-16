@@ -6,6 +6,7 @@
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\snd_warm_vacuum_admiral_bob</sound>
+    <sound>sound\snd_night_lights</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_sine</sprite>
@@ -13,8 +14,9 @@
     <sprite>sprites\spr_line</sprite>
     <sprite>sprites\spr_score</sprite>
     <sprite>sprites\spr_laser_yellow</sprite>
+    <sprite>sprites\spr_yellow_sidewayz</sprite>
     <sprite>sprites\spr_sine_vert</sprite>
-    <sprite>sprites\spr_laser_yellow_sideways</sprite>
+    <sprite>sprites\sprite15</sprite>
     <sprite>sprites\spr_laser_nullify</sprite>
     <sprite>sprites\spr_mayor</sprite>
     <sprite>sprites\spr_bot</sprite>
@@ -22,6 +24,8 @@
     <sprite>sprites\spr_sine_wave_city</sprite>
     <sprite>sprites\spr_gamepad_diagram</sprite>
     <sprite>sprites\spr_wavelord</sprite>
+    <sprite>sprites\spr_charge_meter</sprite>
+    <sprite>sprites\spr_charge_meter_fill</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -36,29 +40,40 @@
     <object>objects\obj_mine_sideways</object>
     <object>objects\obj_line</object>
     <object>objects\obj_score</object>
-    <object>objects\obj_controller</object>
-    <object>objects\obj_controller_cross</object>
     <object>objects\obj_railgun</object>
-    <object>objects\obj_mayor</object>
-    <object>objects\obj_bot</object>
+    <object>objects\obj_railgun_vert</object>
     <object>objects\object11</object>
+    <object>objects\obj_charge_meter</object>
     <object>objects\obj_sine_wave_city</object>
-    <object>objects\obj_speech_mayor</object>
-    <object>objects\obj_controller_intro</object>
-    <object>objects\obj_gamepad_diagram</object>
-    <object>objects\obj_wavelord</object>
-    <object>objects\obj_speech_right</object>
+    <objects name="room_controllers">
+      <object>objects\obj_controller_cross</object>
+      <object>objects\obj_controller_level1</object>
+      <object>objects\obj_controller_level2</object>
+      <object>objects\obj_controller_intro</object>
+      <object>objects\object_controller_level1_outro</object>
+    </objects>
+    <objects name="story_objects">
+      <object>objects\obj_wavelord</object>
+      <object>objects\obj_bot</object>
+      <object>objects\obj_speech_mayor</object>
+      <object>objects\obj_speech_right</object>
+      <object>objects\obj_gamepad_diagram</object>
+      <object>objects\obj_mayor</object>
+    </objects>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tml_intro</timeline>
     <timeline>timelines\tml_lvl1_mines</timeline>
     <timeline>timelines\tml_lvl1</timeline>
     <timeline>timelines\tml_lvl1_verse1</timeline>
+    <timeline>timelines\tml_lvl1_outro</timeline>
   </timelines>
   <rooms name="rooms">
-    <room>rooms\room0</room>
-    <room>rooms\room_cross</room>
-    <room>rooms\room_intro</room>
+    <room>rooms\room0_intro</room>
+    <room>rooms\room_level1</room>
+    <room>rooms\room_level1_outro</room>
+    <room>rooms\room_level2</room>
+    <room>rooms\room_level3</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

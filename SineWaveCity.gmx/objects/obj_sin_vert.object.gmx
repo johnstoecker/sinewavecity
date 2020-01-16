@@ -8,6 +8,29 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>recharge = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,17 +48,56 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var left_axis = gamepad_axis_value(0, gp_axislv);
+            <string>//12 peaks, if its past the 3rd peak, set to 0
+//if its before the 3rd peak, set to 0
+
+if (y&gt;=ystart+sprite_height/12) {
+  y = ystart;
+}
+else if (y&lt;=ystart-sprite_height/12) {
+  y = ystart;
+}
+
+
+var left_axis = gamepad_axis_value(0, gp_axislv);
 var right_axis = gamepad_axis_value(0, gp_axisrv);
 
-if ((left_axis &lt; -0.05 || left_axis  &gt; 0.05) &amp;&amp; (y &gt; -100 || left_axis &gt; 0) &amp;&amp; (y &lt; window_get_height() || left_axis &lt; 0))
+if (left_axis &lt; -0.05 || left_axis  &gt; 0.05)
 {
-motion_set(270, 30 * left_axis);
+direction = point_direction(0,0,0,left_axis);
+speed = point_distance(0,0,0,left_axis)*15;
+//motion_set(270, 30 * left_axis);
 } else {
-motion_set(90, 0);
+  motion_set(90, 0);
 }
-image_yscale = right_axis/2 + 0.6;
+image_yscale = right_axis/3 + 0.6;
 
+
+
+//var hlaxis = gamepad_axis_value(0, gp_axislh);
+//var vlaxis = gamepad_axis_value(0, gp_axislv);
+//direction = point_direction(0, 0, left_axis, 0);
+
+//speed = point_distance(0 ,0, left_axis, 0) * 15;
+
+
+
+//motion_set(1, 30 * left_axis);
+//} else {
+//motion_set(1, 0);
+//}
+//0.3--0.9
+
+if (global.is_railgun_on &amp;&amp; gamepad_button_value(0, gp_shoulderrb) &gt; 0.5 &amp;&amp; global.railgun_recharge &gt; 26) {
+  var sine_height = sprite_height/12;
+//  var offset = x+sine_width/4 + image_xscale * 6;
+    for(var i=0; i&lt;12; i++) {
+
+    
+    instance_create(1000, y + sine_height/2 + i*sine_height,obj_railgun_vert);
+  }
+  global.railgun_recharge = 0;
+}
 </string>
           </argument>
         </arguments>

@@ -142,7 +142,7 @@ right_speech = "";
             <kind>1</kind>
             <string>if typed_letters &lt; string_length(right_speech) {typed_letters+=1;}
 //draw_text_ext(350, 150, string_copy(mayor_speech, 0, ceil(typed_letters)), 25, 150);
-draw_text(x-50, y-50, string_copy(right_speech, 0, ceil(typed_letters)));
+draw_text(x-100, y-50, string_copy(right_speech, 0, ceil(typed_letters)));
 
 
 

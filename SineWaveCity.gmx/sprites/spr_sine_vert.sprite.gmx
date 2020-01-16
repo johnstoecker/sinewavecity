@@ -4,21 +4,21 @@
   <xorig>0</xorig>
   <yorigin>0</yorigin>
   <colkind>0</colkind>
-  <coltolerance>77</coltolerance>
+  <coltolerance>155</coltolerance>
   <sepmasks>-1</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>153</bbox_left>
-  <bbox_right>591</bbox_right>
-  <bbox_top>47</bbox_top>
-  <bbox_bottom>2559</bbox_bottom>
+  <bbox_left>38</bbox_left>
+  <bbox_right>475</bbox_right>
+  <bbox_top>0</bbox_top>
+  <bbox_bottom>4967</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>720</width>
-  <height>2560</height>
+  <width>578</width>
+  <height>4968</height>
   <frames>
     <frame index="0">images\spr_sine_vert_0.png</frame>
   </frames>
