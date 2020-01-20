@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 5*room_speed;
+            <string>global.is_railgun_on = true;
+global.railgun_recharge = 50;
+alarm[0] = 5*room_speed;
 alarm[1] = 5*room_speed;
 
 </string>

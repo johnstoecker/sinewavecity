@@ -1500,7 +1500,7 @@ small_city.depth = 100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_speech_mayor.mayor_speech = "Go go go! Press#(A) to assume#command!";
+            <string>obj_speech_mayor.mayor_speech = "Go go go! Hold#(A) to assume#command!";
 </string>
           </argument>
         </arguments>

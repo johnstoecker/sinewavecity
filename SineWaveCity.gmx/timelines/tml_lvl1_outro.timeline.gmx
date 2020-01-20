@@ -136,6 +136,7 @@
           <argument>
             <kind>1</kind>
             <string>obj_speech_mayor.mayor_speech = "We scienced#up a new#weapon for you.";
+obj_sine.depth = -1;
 </string>
           </argument>
         </arguments>

@@ -61,16 +61,16 @@ alarm_0_count = 4;
 alarm[0] = 2*room_speed;
 
 //more, sometimes two at once
-alarm_1_count = 20;
+alarm_1_count = 8;
 alarm[1] = 8*room_speed
 
 //more, sometimes three at once
-alarm_2_count = 10;
-alarm[2] = 48*room_speed;
+alarm_2_count = 16;
+alarm[2] = 16*room_speed;
 
-//rising action
-alarm_3_count = 12;
-alarm[3] = 68*room_speed;
+//slow bombs
+alarm_3_count = 8;
+alarm[3] = 32*room_speed;
 
 //going for it, sweeps -- 12 pulses per second
 alarm_4_count = 12*15;
@@ -412,8 +412,8 @@ alarm[4] = 5;
             <string>alarm_3_count--;
 if (alarm_3_count &gt; 0) {
   var x_1 = random(global.area_width);
-  instance_create(x_1, 0, obj_mine);
-  alarm[3] = 1*room_speed;
+  instance_create(x_1, 0, obj_bomb);
+  alarm[3] = 2*room_speed;
 }
 
 </string>
@@ -458,7 +458,7 @@ if (alarm_2_count &gt; 0){
        instance_create(width/num * i + x_begin, 0, obj_mine);
        }
     }
-    alarm[2] = 2*room_speed;
+    alarm[2] = room_speed;
 }
 
 </string>
@@ -503,7 +503,7 @@ if (alarm_1_count &gt; 0){
        instance_create(width/num * i + x_begin, 0, obj_mine);
        }
     }
-    alarm[1] = 2*room_speed;
+    alarm[1] = room_speed;
 }
 
 </string>
@@ -535,6 +535,29 @@ if (alarm_0_count &gt; 0) {
   alarm[0] = 2*room_speed;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.railgun_recharge += 1;
 </string>
           </argument>
         </arguments>

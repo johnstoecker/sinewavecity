@@ -121,7 +121,9 @@
   image_speed=0.25;
   image_index=10;
   alarm[0]=8;
-  global.railgun_recharge += 1;
+  if (global.is_railgun_on) {
+    global.railgun_recharge += 1;
+  }
 }
 
 </string>

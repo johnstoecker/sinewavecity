@@ -28,6 +28,7 @@
             <string>global.area_width = 1050;
 global.min_sine_width = global.area_width/9;
 global.is_railgun_on = false;
+press_to_skip = 0;
 </string>
           </argument>
         </arguments>
@@ -83,9 +84,14 @@ global.is_railgun_on = false;
           <argument>
             <kind>1</kind>
             <string>if gamepad_button_check(0, gp_face1) {
-  room_goto(room_level1);
+  press_to_skip += 1;
+} else {
+  press_to_skip = 0;
 }
 
+if (press_to_skip &gt; 15) {
+  room_goto(room_level1);
+}
 </string>
           </argument>
         </arguments>
