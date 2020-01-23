@@ -29,7 +29,7 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>2</string>
+            <string>1</string>
           </argument>
         </arguments>
       </action>
@@ -50,7 +50,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed=0;
-alarm[1]=100;
+alarm[1]=200;
 </string>
           </argument>
         </arguments>

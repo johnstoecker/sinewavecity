@@ -72,44 +72,38 @@ alarm[2] = 16*room_speed;
 alarm_3_count = 8;
 alarm[3] = 32*room_speed;
 
-//going for it, sweeps -- 12 pulses per second
-alarm_4_count = 12*15;
-alarm[4] = 80*room_speed;
+alarm_4_count=30;
+alarm[4] = 48*room_speed;
 
-x_sweep_x = global.area_width/2;
-if (random(10) &lt; 5) {
-  x_sweep_dir = 1; 
-} else { 
-  x_sweep_dir = -1;
-}
+//hella slow bombs
+alarm_5_count = 16;
+alarm[5] = 63*room_speed;
 
-//double sweeps
-alarm_5_count = 12*23;
-alarm[5] = 96*room_speed;
+//hella slow bombs with lasers
+alarm_6_count = 16;
+alarm[6] = 79*room_speed;
 
-x_sweep_1 = random(global.area_width/3);
-//(spawns another laser mirroring
-//x_sweep_2 = global.area_width - x_sweep_1;
+//rising action over 4 8 second verses
+alarm_7_count = 60;
+alarm[7] = 94*room_speed;
 
-//bunch of lasers, sometimes 3 at once
-alarm_6_count = 12;
-alarm[6] = 120*room_speed;
+//slow it down, a few sweeps
+alarm_8_count = 16*15;
+alarm[8] = 126*room_speed;
 
-//middle pulse and side random lasers
-alarm_7_count = 12*19;
-alarm[7] = 144*room_speed;
+//muted chorus, fast bombs
+alarm_9_count = 8;
+alarm[9] = 142*room_speed;
 
-//more single sweeps
-x_sweep_x = global.area_width/2;
-alarm_8_count = 12*15;
-alarm[8] = 164*room_speed;
+//chorus
 
-//spawn 3-5 at once
-alarm_9_count = 12;
-alarm[9] = 180*room_speed;
+alarm_10_count = 8;
+alarm[10] = 158*room_speed;
 
-alarm_10_count = 2;
-alarm[10] = 204*room_speed;
+//94,102,110,118,126
+//slow at 126 and 134
+//muted at 142 and 150
+//then bang out chorus
 
 
 </string>
@@ -136,9 +130,32 @@ alarm[10] = 204*room_speed;
             <kind>1</kind>
             <string>alarm_10_count--;
 if (alarm_10_count &gt; 0) {
-  var x_1 = random(1000);
-  instance_create(x_1, 0, obj_mine);
-  alarm[10] = 2*room_speed;
+  var x_0 = random(50);
+  for(var i=0;i&lt;30;i++){
+    instance_create(i*50+x_0, 0, obj_bomb);
+  }
+
+    var x_1 = random(global.area_width);
+    var x_2 = random(global.area_width);
+    var x_begin = min(x_1, x_2);
+    var x_end = max(x_1, x_2);
+    var width = x_end - x_begin;
+    //how many lasers to spawn
+    var num = 2;
+    if (width &lt; num * global.min_sine_width) {
+        num = 1;
+    }
+    
+    {
+    var i;
+    for (i = 0; i &lt; num; i += 1)
+       {
+       instance_create(width/num * i + x_begin, 0, obj_mine);
+       }
+    }
+
+    
+    alarm[10] = room_speed;
 }
 
 </string>
@@ -164,26 +181,10 @@ if (alarm_10_count &gt; 0) {
           <argument>
             <kind>1</kind>
             <string>alarm_9_count--;
-if (alarm_9_count &gt; 0){
-    var x_1 = random(global.area_width);
-    var x_2 = random(global.area_width);
-    var x_begin = min(x_1, x_2);
-    var x_end = max(x_1, x_2);
-    var width = x_end - x_begin;
-    //how many lasers to spawn
-    var num = random(2)+2;
-    if (width &lt; num * global.min_sine_width) {
-        num = 1;
-    }
-    
-    {
-    var i;
-    for (i = 0; i &lt; num; i += 1)
-       {
-       instance_create(width/num * i + x_begin, 0, obj_mine);
-       }
-    }
-    alarm[9] = 2*room_speed;
+if (alarm_9_count &gt; 0) {
+  var x_1 = random(global.area_width);
+  instance_create(x_1, 0, obj_bomb);
+  alarm[9] = 2*room_speed;
 }
 
 </string>
@@ -208,19 +209,26 @@ if (alarm_9_count &gt; 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm_8_count--;
+            <string>if (alarm_8_count % 10 == 0) {
+ //start a sweep
+  x_sweep_x = random(global.area_width);
+  if (x_sweep_x &lt; 150) {
+    x_sweep_dir = 1;
+  } else if (x_sweep_x &gt; global.area_width - 150) {
+    x_sweep_dir = -1; 
+  } else {
+    x_sweep_dir = -1 ^ (irandom(1));
+  }
+  instance_create(x_sweep_x, 0, obj_mine);
 
-//1/25 chance to change direction
-if (random(25) &lt; 1) {
-  x_sweep_dir = -x_sweep_dir;
+} else if (alarm_8_count % 10 &lt; 5) {
+  instance_create(x_sweep_x, 0, obj_mine);
 }
-if (x_sweep_x &gt; global.area_width-25) {
-  x_sweep_dir = -1;
-} else if(x_sweep_x &lt; 25) {
-  x_sweep_dir = 1;
-}
+
 x_sweep_x += x_sweep_dir * 25;
-instance_create(x_sweep_x, 0, obj_mine);
+
+alarm_8_count--;
+
 if alarm_8_count &gt; 1 {
 alarm[8] = 5;
 }
@@ -248,16 +256,20 @@ alarm[8] = 5;
           <argument>
             <kind>1</kind>
             <string>alarm_7_count--;
-
-if alarm_7_count%12==0 {
-  var other_x = random(global.area_width/3)+80;
-  instance_create(global.area_width/2-other_x, 0, obj_mine);
-  instance_create(global.area_width/2+other_x, 0, obj_mine);
-}
-
-instance_create(global.area_width/2, 0, obj_mine);
-if alarm_7_count &gt; 1 {
-alarm[7] = 5;
+if (alarm_7_count &gt; 0) {
+  var x_1 = random(1000);
+  instance_create(x_1, 0, obj_mine);
+  var interval = 2;
+  if (alarm_7_count &gt; 56) {
+    interval = 2;
+  } else if (alarm_7_count &gt; 48) {
+    interval = 1;
+  } else if (alarm_7_count &gt; 32) {
+    interval = 0.5;
+  } else {
+    interval = 0.24;
+  }
+  alarm[7] = interval*room_speed;
 }
 
 </string>
@@ -283,15 +295,20 @@ alarm[7] = 5;
           <argument>
             <kind>1</kind>
             <string>alarm_6_count--;
-if (alarm_6_count &gt; 0){
-    var x_1 = random(global.area_width);
+if (alarm_6_count &gt; 0) {
+  var x_0 = random(50);
+  for(var i=0;i&lt;30;i++){
+    instance_create(i*50+x_0, 0, obj_bomb_slow);
+  }
+
+      var x_1 = random(global.area_width);
     var x_2 = random(global.area_width);
     var x_begin = min(x_1, x_2);
     var x_end = max(x_1, x_2);
     var width = x_end - x_begin;
     //how many lasers to spawn
-    var num = random(2)+1;
-    if (width &lt; num * 80) {
+    var num = 2;
+    if (width &lt; num * global.min_sine_width) {
         num = 1;
     }
     
@@ -302,7 +319,9 @@ if (alarm_6_count &gt; 0){
        instance_create(width/num * i + x_begin, 0, obj_mine);
        }
     }
-    alarm[6] = 2*room_speed;
+
+    
+    alarm[6] = room_speed;
 }
 
 </string>
@@ -328,24 +347,12 @@ if (alarm_6_count &gt; 0){
           <argument>
             <kind>1</kind>
             <string>alarm_5_count--;
-//1/25 chance to change direction
-if (random(25) &lt; 1) {
-  x_sweep_dir = -x_sweep_dir;
-}
-
-var min_width = global.area_width/8;
-var max_width = global.area_width/4
-
-if (x_sweep_1 &gt; global.area_width/2-min_width) {
-  x_sweep_dir = -1;
-} else if(x_sweep_1 &lt; global.area_width/2-max_width) {
-  x_sweep_dir = 1;
-}
-x_sweep_1 += x_sweep_dir * 25;
-instance_create(x_sweep_1, 0, obj_mine);
-instance_create(global.area_width - x_sweep_1, 0, obj_mine);
-if alarm_5_count &gt; 1 {
-alarm[5] = 5;
+if (alarm_5_count &gt; 0) {
+  var x_1 = random(50);
+  for(var i=0;i&lt;30;i++){
+    instance_create(i*50+x_1, 0, obj_bomb_slow);
+  }
+  alarm[5] = room_speed;
 }
 
 </string>
@@ -371,20 +378,26 @@ alarm[5] = 5;
           <argument>
             <kind>1</kind>
             <string>alarm_4_count--;
-
-//1/25 chance to change direction
-if (random(25) &lt; 1) {
-  x_sweep_dir = -x_sweep_dir;
-}
-if (x_sweep_x &gt; global.area_width-25) {
-  x_sweep_dir = -1;
-} else if(x_sweep_x &lt; 25) {
-  x_sweep_dir = 1;
-}
-x_sweep_x += x_sweep_dir * 25;
-instance_create(x_sweep_x, 0, obj_mine);
-if alarm_4_count &gt; 1 {
-alarm[4] = 5;
+if (alarm_4_count &gt; 0){
+    var x_1 = random(global.area_width);
+    var x_2 = random(global.area_width);
+    var x_begin = min(x_1, x_2);
+    var x_end = max(x_1, x_2);
+    var width = x_end - x_begin;
+    //how many lasers to spawn
+    var num = random(3);
+    if (width &lt; num * global.min_sine_width) {
+        num = 1;
+    }
+    
+    {
+    var i;
+    for (i = 0; i &lt; num; i += 1)
+       {
+       instance_create(width/num * i + x_begin, 0, obj_mine);
+       }
+    }
+    alarm[4] = room_speed/2;
 }
 
 </string>
@@ -412,7 +425,7 @@ alarm[4] = 5;
             <string>alarm_3_count--;
 if (alarm_3_count &gt; 0) {
   var x_1 = random(global.area_width);
-  instance_create(x_1, 0, obj_bomb);
+  instance_create(x_1, 0, obj_bomb_slow);
   alarm[3] = 2*room_speed;
 }
 
