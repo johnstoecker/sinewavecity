@@ -56,7 +56,7 @@
     <instance objName="obj_score" x="800" y="32" name="inst_CDA70854" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sin_vert" x="832" y="-512" name="inst_8A3597BD" locked="0" code="" scaleX="0.311111122369766" scaleY="0.349999994039536" colour="4294967295" rotation="0"/>
     <instance objName="obj_line" x="912" y="32" name="inst_21988754" locked="0" code="" scaleX="0.025000000372529" scaleY="26.3529415130615" colour="4294967295" rotation="0"/>
-    <instance objName="obj_controller_cross" x="192" y="160" name="inst_D66BFB4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_controller_level3" x="192" y="160" name="inst_D66BFB4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_line" x="480" y="608" name="inst_C84E7267" locked="0" code="" scaleX="21.8367347717285" scaleY="2.47000002861023" colour="4294967295" rotation="0"/>
     <instance objName="obj_line" x="939" y="382" name="inst_56D64AFE" locked="0" code="" scaleX="2.20408153533936" scaleY="15.3800001144409" colour="4294967295" rotation="0"/>
   </instances>

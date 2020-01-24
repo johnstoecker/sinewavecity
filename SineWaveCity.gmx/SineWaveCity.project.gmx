@@ -7,6 +7,7 @@
   <sounds name="sound">
     <sound>sound\snd_warm_vacuum_admiral_bob</sound>
     <sound>sound\snd_night_lights</sound>
+    <sound>sound\snd_no_artificial_flavoring</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_sine</sprite>
@@ -49,11 +50,12 @@
     <object>objects\obj_charge_meter</object>
     <object>objects\obj_sine_wave_city</object>
     <objects name="room_controllers">
-      <object>objects\obj_controller_cross</object>
-      <object>objects\obj_controller_level1</object>
-      <object>objects\obj_controller_level2</object>
       <object>objects\obj_controller_intro</object>
+      <object>objects\obj_controller_level1</object>
       <object>objects\object_controller_level1_outro</object>
+      <object>objects\obj_controller_level2</object>
+      <object>objects\obj_controller_level2_outro</object>
+      <object>objects\obj_controller_level3</object>
     </objects>
     <objects name="story_objects">
       <object>objects\obj_wavelord</object>
@@ -70,12 +72,14 @@
     <timeline>timelines\tml_lvl1</timeline>
     <timeline>timelines\tml_lvl1_verse1</timeline>
     <timeline>timelines\tml_lvl1_outro</timeline>
+    <timeline>timelines\tml_lvl2_outro</timeline>
   </timelines>
   <rooms name="rooms">
     <room>rooms\room0_intro</room>
     <room>rooms\room_level1</room>
     <room>rooms\room_level1_outro</room>
     <room>rooms\room_level2</room>
+    <room>rooms\room_level2_outro</room>
     <room>rooms\room_level3</room>
   </rooms>
   <help>
