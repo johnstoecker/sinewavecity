@@ -88,15 +88,15 @@ image_yscale = right_axis/3 + 0.6;
 //}
 //0.3--0.9
 
-if (global.is_railgun_on &amp;&amp; gamepad_button_value(0, gp_shoulderrb) &gt; 0.5 &amp;&amp; global.railgun_recharge &gt; 26) {
+if (global.is_railgun_on &amp;&amp; gamepad_button_value(0, gp_shoulderrb) &gt; 0.5 &amp;&amp; global.railgun_vert_recharge &gt; 26) {
   var sine_height = sprite_height/12;
 //  var offset = x+sine_width/4 + image_xscale * 6;
     for(var i=0; i&lt;12; i++) {
 
     
-    instance_create(1000, y + sine_height/2 + i*sine_height,obj_railgun_vert);
+    instance_create(200, y + sine_height/2 + i*sine_height,obj_railgun_vert);
   }
-  global.railgun_recharge = 0;
+  global.railgun_vert_recharge = 0;
 }
 </string>
           </argument>

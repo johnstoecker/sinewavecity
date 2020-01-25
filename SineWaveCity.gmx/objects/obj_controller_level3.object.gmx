@@ -25,11 +25,64 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.is_railgun_on = true;
-global.railgun_recharge = 50;
-alarm[0] = 5*room_speed;
-alarm[1] = 5*room_speed;
+            <string>global.area_width = 850;
+global.area_height = 500;
 
+global.is_railgun_on = true;
+global.railgun_recharge = 50;
+global.railgun_vert_recharge = 50;
+
+alarm_0_count = 24;
+alarm[0] = 1*room_speed;
+
+alarm_1_count = 10;
+alarm[1] = 33*room_speed;
+
+alarm_2_count = 16;
+alarm[2] = 73*room_speed;
+//0,16
+
+//33, driving starts
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm_2_count--;
+if (alarm_2_count % 2 == 0) {
+  var x_1 = random(global.area_width);
+  var bomb = instance_create(x_1, 0, obj_bomb_both);
+  with(bomb) {
+    direction = 270;
+  }
+} else {
+  var y_1 = random(global.area_height);
+  var bomb = instance_create(0, y_1, obj_bomb_both);
+  with(bomb) {
+    direction = 0;
+    alarm[1] = 180;
+  }
+}
+if (alarm_2_count &gt; 0) {
+  alarm[2] = 2*room_speed;
+}
 </string>
           </argument>
         </arguments>
@@ -52,9 +105,53 @@ alarm[1] = 5*room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var x_1 = random(1000);
-instance_create(x_1, 0, obj_mine);
-alarm[1] = 150;
+            <string>alarm_1_count--;
+if (alarm_1_count &gt; 0){
+    var x_1 = random(global.area_width);
+    var x_2 = random(global.area_width);
+    var x_begin = min(x_1, x_2);
+    var x_end = max(x_1, x_2);
+    var width = x_end - x_begin;
+    //how many lasers to spawn
+    var num = 2;
+    if (width &lt; num * global.min_sine_width) {
+        num = 1;
+    }
+    
+    {
+    var i;
+    for (i = 0; i &lt; num; i += 1)
+       {
+       instance_create(width/num * i + x_begin, 0, obj_mine);
+       }
+    }
+
+    var y_1 = random(global.area_height);
+    var y_2 = random(global.area_height);
+    var y_begin = min(y_1, y_2);
+    var y_end = max(y_1, y_2);
+    var height = y_end - y_begin;
+    //how many lasers to spawn
+    var num = 1;
+    if (alarm_1_count &lt; 8) {
+      num = 2;
+    }
+    show_debug_message(global.min_sine_height);
+    show_debug_message(height);
+    if (height &lt; num * global.min_sine_height) {
+        num = 1;
+    }
+    
+    {
+    var i;
+    for (i = 0; i &lt; num; i += 1)
+       {
+       instance_create(0, height/num * i + y_begin, obj_mine_sideways);
+       }
+    }
+    alarm[1] = 4*room_speed;
+
+}
 
 </string>
           </argument>
@@ -78,10 +175,51 @@ alarm[1] = 150;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var y_1 = random(500);
-instance_create(0, y_1, obj_mine_sideways);
-alarm[0] = 150;
+            <string>
 
+if (alarm_0_count % 2 == 0) {
+var y_1 = random(global.area_height);
+instance_create(0, y_1, obj_mine_sideways);
+} else {
+var x_1 = random(global.area_width);
+instance_create(x_1, 0, obj_mine);
+}
+
+
+alarm_0_count--;
+
+interval = 2;
+if (alarm_0_count &lt; 16) {
+  interval = 1;
+}
+if (alarm_0_count &gt; 0){
+  alarm[0] = interval * room_speed;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.railgun_recharge += 1;
+global.railgun_vert_recharge += 1;
 </string>
           </argument>
         </arguments>

@@ -41,6 +41,7 @@
     <object>objects\obj_mine</object>
     <object>objects\obj_bomb_slow</object>
     <object>objects\obj_bomb</object>
+    <object>objects\obj_bomb_both</object>
     <object>objects\obj_mine_sideways</object>
     <object>objects\obj_line</object>
     <object>objects\obj_score</object>
