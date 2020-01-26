@@ -25,11 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.area_width = 1050;
-global.area_height = 600;
-global.min_sine_width = global.area_width/9;
-global.min_sine_height = global.area_height/5;
-global.is_railgun_on = false;
+            <string>
 press_to_skip = 0;
 </string>
           </argument>

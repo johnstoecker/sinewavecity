@@ -92,6 +92,9 @@ if (global.is_railgun_on &amp;&amp; gamepad_button_value(0, gp_shoulderrb) &gt; 
   }
   global.railgun_recharge = 0;
 }
+
+
+
 </string>
           </argument>
         </arguments>

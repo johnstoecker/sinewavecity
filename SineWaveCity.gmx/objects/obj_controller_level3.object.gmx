@@ -47,6 +47,30 @@ alarm[2] = 73*room_speed;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>211</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>snd_no_artificial_flavoring</sound>
+          </argument>
+          <argument>
+            <kind>3</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="2">
       <action>
@@ -67,13 +91,13 @@ alarm[2] = 73*room_speed;
             <kind>1</kind>
             <string>alarm_2_count--;
 if (alarm_2_count % 2 == 0) {
-  var x_1 = random(global.area_width);
+  var x_1 = random(400);
   var bomb = instance_create(x_1, 0, obj_bomb_both);
   with(bomb) {
     direction = 270;
   }
 } else {
-  var y_1 = random(global.area_height);
+  var y_1 = random(250);
   var bomb = instance_create(0, y_1, obj_bomb_both);
   with(bomb) {
     direction = 0;
