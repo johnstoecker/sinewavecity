@@ -53,6 +53,7 @@
 global.min_sine_width = global.area_width/9;
 global.is_railgun_on = true;
 global.railgun_recharge = 0;
+global.points = 100;
 //room_goto_next();
 //room_goto(2);
 
@@ -100,6 +101,8 @@ alarm[9] = 142*room_speed;
 alarm_10_count = 8;
 alarm[10] = 158*room_speed;
 
+alarm[11] = 170*room_speed;
+
 //94,102,110,118,126
 //slow at 126 and 134
 //muted at 142 and 150
@@ -112,6 +115,34 @@ alarm[10] = 158*room_speed;
       </action>
     </event>
     <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ini_open("data.ini");
+level_1_score = ini_read_real("data", "level_2_score", 0);
+
+if (global.points &gt; level_2_score) {
+    ini_write_real("data", "level_2_score", global.points);
+}
+
+ini_close();
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>222</id>

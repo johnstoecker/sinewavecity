@@ -40,7 +40,15 @@ alarm[0] = 10;
 current_state = level_menu_states.level_1;
 obj_large_1.image_index = 2;
 
+ini_open("data.ini");
+level_1_score = ini_read_real("data", "level_1_score", 0);
+level_2_score = ini_read_real("data", "level_2_score", 0);
+level_3_score = ini_read_real("data", "level_3_score", 0);
 
+show_debug_message(level_1_score);
+
+
+ini_close();
 </string>
           </argument>
         </arguments>
@@ -130,6 +138,36 @@ if gamepad_button_check(0, gp_face1) &amp;&amp; allow_input {
 }
 
 global.state_change_debounce--;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_font(font_big_baiti);
+draw_set_color(c_white);
+draw_text(400, 160, level_1_score);
+draw_text(400,320,level_2_score);
+draw_text(400,480,level_3_score);
+
+draw_set_font(font0);
 
 </string>
           </argument>

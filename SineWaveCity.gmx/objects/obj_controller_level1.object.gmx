@@ -29,6 +29,8 @@
 global.min_sine_width = global.area_width/9;
 global.is_railgun_on = false;
 
+global.points = 100;
+
 //a few lasers
 alarm_0_count = 4;
 alarm[0] = 2*room_speed;
@@ -116,6 +118,34 @@ alarm[11] = 210* room_speed;
       </action>
     </event>
     <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ini_open("data.ini");
+level_1_score = ini_read_real("data", "level_1_score", 0);
+
+if (global.points &gt; level_1_score) {
+    ini_write_real("data", "level_1_score", global.points);
+}
+
+ini_close();
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>212</id>

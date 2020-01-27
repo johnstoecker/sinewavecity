@@ -15,7 +15,9 @@
     <sprite>sprites\spr_line</sprite>
     <sprite>sprites\spr_score</sprite>
     <sprite>sprites\spr_laser_yellow</sprite>
+    <sprite>sprites\spr_laser_blue</sprite>
     <sprite>sprites\spr_yellow_sidewayz</sprite>
+    <sprite>sprites\spr_blue_sidewayz</sprite>
     <sprite>sprites\spr_sine_vert</sprite>
     <sprite>sprites\spr_laser_nullify</sprite>
     <sprite>sprites\spr_mayor</sprite>
@@ -42,6 +44,7 @@
   <fonts name="fonts">
     <font>fonts\font0</font>
     <font>fonts\font1</font>
+    <font>fonts\font_big_baiti</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_sine</object>
@@ -67,6 +70,8 @@
       <object>objects\obj_controller_level2</object>
       <object>objects\obj_controller_level2_outro</object>
       <object>objects\obj_controller_level3</object>
+      <object>objects\obj_controller_level4</object>
+      <object>objects\obj_master_controller</object>
     </objects>
     <objects name="story_objects">
       <object>objects\obj_wavelord</object>
@@ -103,6 +108,7 @@
     <room>rooms\room_level2</room>
     <room>rooms\room_level2_outro</room>
     <room>rooms\room_level3</room>
+    <room>rooms\room_level4</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
