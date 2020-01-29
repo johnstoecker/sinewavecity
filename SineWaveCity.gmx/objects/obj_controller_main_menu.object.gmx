@@ -116,13 +116,13 @@ if (left_axis &lt; -0.33 || left_axis &gt; 0.33) &amp;&amp; global.state_change_
     obj_exit.image_index = 1;
   }
 
-  global.state_change_debounce = 5;
+  global.state_change_debounce = 10;
 }
 
 
 if gamepad_button_check(0, gp_face1) &amp;&amp; allow_input {
   if (current_state == states.new_game) {
-    room_goto(room_level1);
+    room_goto(room0_intro);
   } else if (current_state == states.levels ){
     room_goto(room_levels_menu);
   } else if (current_state == states.game_exit ){

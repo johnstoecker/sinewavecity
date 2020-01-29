@@ -121,7 +121,7 @@ if (left_axis &lt; -0.33 || left_axis &gt; 0.33) &amp;&amp; global.state_change_
     obj_back.image_index = 1;
   }
 
-  global.state_change_debounce = 5;
+  global.state_change_debounce = 10;
 }
 
 
@@ -168,6 +168,8 @@ draw_text(400,320,level_2_score);
 draw_text(400,480,level_3_score);
 
 draw_set_font(font0);
+
+
 
 </string>
           </argument>

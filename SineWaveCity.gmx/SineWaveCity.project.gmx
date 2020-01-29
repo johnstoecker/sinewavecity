@@ -37,6 +37,7 @@
       <sprite>sprites\spr_large_1</sprite>
       <sprite>sprites\spr_large_2</sprite>
       <sprite>sprites\spr_large_3</sprite>
+      <sprite>sprites\spr_resume</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -62,6 +63,7 @@
     <object>objects\obj_charge_meter</object>
     <object>objects\obj_sine_wave_city</object>
     <objects name="room_controllers">
+      <object>objects\obj_master_controller</object>
       <object>objects\obj_controller_main_menu</object>
       <object>objects\obj_controller_levels_menu</object>
       <object>objects\obj_controller_intro</object>
@@ -71,7 +73,6 @@
       <object>objects\obj_controller_level2_outro</object>
       <object>objects\obj_controller_level3</object>
       <object>objects\obj_controller_level4</object>
-      <object>objects\obj_master_controller</object>
     </objects>
     <objects name="story_objects">
       <object>objects\obj_wavelord</object>
@@ -89,6 +90,8 @@
       <object>objects\obj_large_1</object>
       <object>objects\obj_large_2</object>
       <object>objects\obj_large_3</object>
+      <object>objects\obj_resume</object>
+      <object>objects\obj_exit_to_menu</object>
     </objects>
   </objects>
   <timelines name="timelines">

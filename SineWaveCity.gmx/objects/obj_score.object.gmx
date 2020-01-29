@@ -49,7 +49,7 @@
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_text(x+5,14,global.points);
+draw_text(x+10,14,global.points);
 
 </string>
           </argument>

@@ -27,6 +27,14 @@
             <kind>1</kind>
             <string>paused = false;
 screenShot = -1;
+
+enum paused_menu_states {
+  resume,
+  exit_to_menu
+}
+
+current_state = paused_menu_states.resume;
+global.points = 10;
 </string>
           </argument>
         </arguments>
@@ -57,14 +65,70 @@ screenShot = -1;
 
 if(paused){
     instance_deactivate_all(1);
+    audio_pause_all();
+
+    resume = instance_create(200,200, obj_resume);
+
+    exit_to_menu = instance_create(250,400,obj_exit_to_menu);
+
+    obj_resume.visible = true;
+    obj_resume.image_index=1;
+    obj_exit_to_menu.visible = true;
 }else{
+    instance_destroy(obj_resume);
+    instance_destroy(obj_exit_to_menu);
+    
     if(sprite_exists(screenShot)){
         sprite_delete(screenShot);
     }
     instance_activate_all();
+    audio_resume_all();
 }
 }
 
+if (paused &amp;&amp; instance_exists(obj_resume) &amp;&amp; instance_exists(obj_exit_to_menu)) {
+
+var left_axis = gamepad_axis_value(0, gp_axislv);
+
+if (left_axis &lt; -0.33 || left_axis &gt; 0.33) &amp;&amp; global.state_change_debounce &lt; 0 {
+  if (left_axis &lt; -0.05) {
+    current_state += 1;
+  }
+
+  if (left_axis &gt; 0.05) {
+    current_state += 1;
+  } 
+     
+  obj_resume.image_index = 0;
+  obj_exit_to_menu.image_index = 0;
+
+  current_state = current_state % 2;
+  if (current_state == paused_menu_states.resume) {
+    obj_resume.image_index = 1;
+  } else if (current_state == paused_menu_states.exit_to_menu ){
+    obj_exit_to_menu.image_index = 1;
+  }
+  global.state_change_debounce = 10;
+}
+
+
+if gamepad_button_check(0, gp_face1) {
+  paused = false;
+  if (current_state == paused_menu_states.resume) {
+    room_goto(room_level1);
+  } else if (current_state == paused_menu_states.exit_to_menu ){
+    room_goto(room_main_menu);
+  }
+}
+
+}
+global.state_change_debounce--;
+
+if global.points &lt; 0 {
+  global.points = 0;
+  audio_stop_all();
+  room_goto(room_main_menu);
+}
 
 </string>
           </argument>
@@ -88,11 +152,8 @@ if(paused){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_center);
-
-if(paused){
+            <string>if(paused){
     draw_sprite_ext(screenShot,0,0,0,1,1,0,c_white,1);
-    draw_text(view_wview * 0.5, view_hview * 0.5, "Paused");
 }
 </string>
           </argument>

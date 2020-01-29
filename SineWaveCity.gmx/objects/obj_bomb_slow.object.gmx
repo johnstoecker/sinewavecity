@@ -77,11 +77,11 @@ alarm[1]=200;
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string>25</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string>25</string>
           </argument>
         </arguments>
       </action>

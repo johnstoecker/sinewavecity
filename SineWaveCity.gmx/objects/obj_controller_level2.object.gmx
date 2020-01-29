@@ -132,7 +132,7 @@ alarm[11] = 170*room_speed;
           <argument>
             <kind>1</kind>
             <string>ini_open("data.ini");
-level_1_score = ini_read_real("data", "level_2_score", 0);
+level_2_score = ini_read_real("data", "level_2_score", 0);
 
 if (global.points &gt; level_2_score) {
     ini_write_real("data", "level_2_score", global.points);
