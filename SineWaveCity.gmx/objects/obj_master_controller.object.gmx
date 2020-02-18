@@ -33,8 +33,20 @@ enum paused_menu_states {
   exit_to_menu
 }
 
+var gp_num = gamepad_get_device_count();
+
+global.gamepad_connected = false;
+
+for (var i = 0; i &lt; gp_num; i++;)
+{
+   if gamepad_is_connected(i) {
+      global.gamepad_connected = true
+   }
+}
+
 current_state = paused_menu_states.resume;
 global.points = 10;
+global.max_railgun_recharge = 26;
 </string>
           </argument>
         </arguments>
@@ -57,8 +69,22 @@ global.points = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(0,gp_start)){
+            <string>var gp_num = gamepad_get_device_count();
+
+global.gamepad_connected = false;
+
+for (var i = 0; i &lt; gp_num; i++;)
+{
+   if gamepad_is_connected(i) {
+      global.gamepad_connected = true
+   }
+}
+
+
+
+if(keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(0,gp_start) || (!global.gamepad_connected &amp;&amp; !paused)){
     paused = !paused;
+
     if(!sprite_exists(screenShot)){
         screenShot = sprite_create_from_surface(application_surface,0,0,view_wport,view_hport,0,0,0,0);    
     }
@@ -66,7 +92,9 @@ global.points = 10;
 if(paused){
     instance_deactivate_all(1);
     audio_pause_all();
-
+    if !global.gamepad_connected {
+        controller = instance_create(50,200,obj_gamepad_diagram);
+    }
     resume = instance_create(200,200, obj_resume);
 
     exit_to_menu = instance_create(250,400,obj_exit_to_menu);
@@ -77,6 +105,7 @@ if(paused){
 }else{
     instance_destroy(obj_resume);
     instance_destroy(obj_exit_to_menu);
+    instance_destroy(obj_gamepad_diagram);
     
     if(sprite_exists(screenShot)){
         sprite_delete(screenShot);
@@ -127,7 +156,7 @@ global.state_change_debounce--;
 if global.points &lt; 0 {
   global.points = 0;
   audio_stop_all();
-  room_goto(room_main_menu);
+  room_goto(room_game_over);
 }
 
 </string>
@@ -152,9 +181,9 @@ if global.points &lt; 0 {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(paused){
-    draw_sprite_ext(screenShot,0,0,0,1,1,0,c_white,1);
-}
+            <string>//if(paused){
+//    draw_sprite_ext(screenShot,0,0,0,1,1,0,c_white,1);
+//}
 </string>
           </argument>
         </arguments>

@@ -26,9 +26,13 @@
     <sprite>sprites\spr_sine_wave_city</sprite>
     <sprite>sprites\spr_gamepad_diagram</sprite>
     <sprite>sprites\spr_wavelord</sprite>
+    <sprite>sprites\spr_spiral</sprite>
     <sprite>sprites\spr_charge_meter</sprite>
     <sprite>sprites\spr_charge_meter_fill</sprite>
     <sprite>sprites\spr_bomb</sprite>
+    <sprite>sprites\spr_bomb_explode</sprite>
+    <sprite>sprites\spr_bomb_half</sprite>
+    <sprite>sprites\spr_bomb_quarter</sprite>
     <sprites name="menu_sprites">
       <sprite>sprites\spr_new_game</sprite>
       <sprite>sprites\spr_levels</sprite>
@@ -37,7 +41,9 @@
       <sprite>sprites\spr_large_1</sprite>
       <sprite>sprites\spr_large_2</sprite>
       <sprite>sprites\spr_large_3</sprite>
+      <sprite>sprites\spr_large_4</sprite>
       <sprite>sprites\spr_resume</sprite>
+      <sprite>sprites\spr_game_over</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -60,10 +66,12 @@
     <object>objects\obj_railgun</object>
     <object>objects\obj_railgun_vert</object>
     <object>objects\object11</object>
+    <object>objects\obj_spiral</object>
     <object>objects\obj_charge_meter</object>
     <object>objects\obj_sine_wave_city</object>
     <objects name="room_controllers">
       <object>objects\obj_master_controller</object>
+      <object>objects\obj_game_over_controller</object>
       <object>objects\obj_controller_main_menu</object>
       <object>objects\obj_controller_levels_menu</object>
       <object>objects\obj_controller_intro</object>
@@ -72,6 +80,7 @@
       <object>objects\obj_controller_level2</object>
       <object>objects\obj_controller_level2_outro</object>
       <object>objects\obj_controller_level3</object>
+      <object>objects\obj_controller_level3_outro</object>
       <object>objects\obj_controller_level4</object>
     </objects>
     <objects name="story_objects">
@@ -90,8 +99,10 @@
       <object>objects\obj_large_1</object>
       <object>objects\obj_large_2</object>
       <object>objects\obj_large_3</object>
+      <object>objects\obj_large_4</object>
       <object>objects\obj_resume</object>
       <object>objects\obj_exit_to_menu</object>
+      <object>objects\obj_game_over</object>
     </objects>
   </objects>
   <timelines name="timelines">
@@ -101,6 +112,7 @@
     <timeline>timelines\tml_lvl1_verse1</timeline>
     <timeline>timelines\tml_lvl1_outro</timeline>
     <timeline>timelines\tml_lvl2_outro</timeline>
+    <timeline>timelines\tml_lvl3_outro</timeline>
   </timelines>
   <rooms name="rooms">
     <room>rooms\room_main_menu</room>
@@ -111,7 +123,9 @@
     <room>rooms\room_level2</room>
     <room>rooms\room_level2_outro</room>
     <room>rooms\room_level3</room>
+    <room>rooms\room_level3_outro</room>
     <room>rooms\room_level4</room>
+    <room>rooms\room_game_over</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

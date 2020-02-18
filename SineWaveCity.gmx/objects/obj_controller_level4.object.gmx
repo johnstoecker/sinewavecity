@@ -30,51 +30,13 @@ global.area_height = 500;
 
 global.points = 100;
 global.is_railgun_on = true;
-global.railgun_recharge = 50;
-global.railgun_vert_recharge = 50;
+global.railgun_recharge = 0;
+global.railgun_vert_recharge = 0;
 
 alarm_0_count = 24;
 alarm[0] = 1*room_speed;
 
-alarm_1_count = 10;
-alarm[1] = 33*room_speed;
-
-alarm_2_count = 16;
-alarm[2] = 73*room_speed;
-
-alarm_3_count = 16;
-alarm[3] = 105*room_speed;
-
-alarm_4_count = 8;
-alarm[4] = 137*room_speed;
-//0,16
-
-//33, driving starts
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>211</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_sound</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>6</kind>
-            <sound>snd_no_artificial_flavoring</sound>
-          </argument>
-          <argument>
-            <kind>3</kind>
-            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -273,26 +235,7 @@ if (alarm_1_count &gt; 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-if (alarm_0_count % 2 == 0) {
-var y_1 = random(global.area_height);
-instance_create(0, y_1, obj_mine_sideways);
-} else {
-var x_1 = random(global.area_width);
-instance_create(x_1, 0, obj_mine);
-}
-
-
-alarm_0_count--;
-
-interval = 2;
-if (alarm_0_count &lt; 16) {
-  interval = 1;
-}
-if (alarm_0_count &gt; 0){
-  alarm[0] = interval * room_speed;
-}
+            <string>instance_create(100,100,obj_spiral);
 
 </string>
           </argument>

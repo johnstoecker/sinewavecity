@@ -49,8 +49,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0;
+            <string>image_speed=0.2;
 alarm[1]=200;
+collided = false;
 </string>
           </argument>
         </arguments>
@@ -190,10 +191,10 @@ alarm[1]=200;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (image_speed==0) {
+            <string>if (!collided) {
   score += 5;
-  image_speed=0.25;
-  image_index=10;
+  collided = true;  
+  sprite_index = spr_bomb_explode;
   alarm[0]=8;
 }
 
@@ -243,9 +244,9 @@ alarm[1]=200;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (image_speed==0) {
+            <string>if (!collided) {
   score -= 15;
-  image_speed=1;
+  collided = true;
   alarm[0]=9;
 }
 

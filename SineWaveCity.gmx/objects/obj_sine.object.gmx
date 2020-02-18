@@ -82,7 +82,7 @@ motion_set(1, 0);
 //0.3--0.9
 image_xscale = right_axis/3 + 0.6;
 
-if (global.is_railgun_on &amp;&amp; gamepad_button_value(0, gp_shoulderrb) &gt; 0.5 &amp;&amp; global.railgun_recharge &gt; 26) {
+if (global.is_railgun_on &amp;&amp; gamepad_button_value(0, gp_shoulderrb) &gt; 0.5 &amp;&amp; global.railgun_recharge &gt; global.max_railgun_recharge) {
   var sine_width = sprite_width/12;
   var offset = x+sine_width/4 + image_xscale * 6;
     for(var i=-6; i&lt;6; i++) {

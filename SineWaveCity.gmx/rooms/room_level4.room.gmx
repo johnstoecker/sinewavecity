@@ -53,10 +53,10 @@
   <instances>
     <instance objName="obj_score" x="800" y="32" name="inst_CDA70854" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sin_vert" x="835" y="-512" name="inst_8A3597BD" locked="0" code="" scaleX="0.311111122369766" scaleY="0.349999994039536" colour="4294967295" rotation="0"/>
-    <instance objName="obj_controller_level3" x="192" y="160" name="inst_D66BFB4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_line" x="379" y="669" name="inst_C84E7267" locked="0" code="" scaleX="20" scaleY="4.90000009536743" colour="4294967295" rotation="0"/>
     <instance objName="obj_line" x="953" y="382" name="inst_56D64AFE" locked="0" code="" scaleX="2.94000005722046" scaleY="15.3999996185303" colour="4294967295" rotation="0"/>
     <instance objName="obj_sine" x="512" y="576" name="inst_95F010DD" locked="0" code="" scaleX="0.417187511920929" scaleY="0.324999988079071" colour="4294967295" rotation="0"/>
+    <instance objName="obj_controller_level4" x="208" y="215" name="inst_8A55D8E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

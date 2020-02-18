@@ -33,20 +33,40 @@ global.is_railgun_on = true;
 global.railgun_recharge = 50;
 global.railgun_vert_recharge = 50;
 
+//a few lasers
 alarm_0_count = 24;
 alarm[0] = 1*room_speed;
 
+//a few at a time
 alarm_1_count = 10;
 alarm[1] = 33*room_speed;
 
+//some bombs
 alarm_2_count = 16;
 alarm[2] = 73*room_speed;
 
+//lasers, more
 alarm_3_count = 16;
 alarm[3] = 105*room_speed;
 
-alarm_4_count = 8;
+//sweeps
+alarm_4_count = 3*15;
 alarm[4] = 137*room_speed;
+
+x_sweep_x = global.area_width/2;
+y_sweep_y = global.area_height/2;
+if (random(10) &lt; 5) {
+  x_sweep_dir = 1;
+  y_sweep_dir = 1;
+} else { 
+  x_sweep_dir = -1;
+  y_sweep_dir = -1;
+}
+
+alarm_5_count = 48;
+alarm[5] = 152*room_speed;
+
+alarm[6] = 195*room_speed;
 //0,16
 
 //33, driving starts
@@ -75,6 +95,167 @@ alarm[4] = 137*room_speed;
           <argument>
             <kind>3</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ini_open("data.ini");
+level_3_score = ini_read_real("data", "level_3_score", 0);
+
+if (global.points &gt; level_3_score) {
+    ini_write_real("data", "level_3_score", global.points);
+}
+
+ini_close();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>222</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_next_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm_5_count--;
+if (alarm_5_count &gt; 0){
+    var x_1 = random(global.area_width/3);
+    var x_2 = random(global.area_width/3) + (global.area_width - global.area_width/3);
+    var x_begin = min(x_1, x_2);
+    var x_end = max(x_1, x_2);
+    var width = x_end - x_begin;
+    //how many lasers to spawn
+    var num = 3;
+    if (width &lt; num * global.min_sine_width) {
+        num = 1;
+    }
+    
+    {
+    var i;
+    for (i = 0; i &lt; num; i += 1)
+       {
+       instance_create(width/num * i + x_begin, 0, obj_mine);
+       }
+    }
+
+    var y_1 = random(global.area_height/3);
+    var y_2 = random(global.area_height/3) + (global.area_height - global.area_height/3);
+    var y_begin = min(y_1, y_2);
+    var y_end = max(y_1, y_2);
+    var height = y_end - y_begin;
+    //how many lasers to spawn
+    var num = 3;
+    if (height &lt; num * global.min_sine_height) {
+        num = 1;
+    }
+    
+    {
+    var i;
+    for (i = 0; i &lt; num; i += 1)
+       {
+       instance_create(0, height/num * i + y_begin, obj_mine_sideways);
+       }
+    }
+    alarm[3] = 2*room_speed;
+
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm_4_count--;
+
+//1/25 chance to change direction
+if (random(25) &lt; 1) {
+  x_sweep_dir = -x_sweep_dir;
+}
+if (x_sweep_x &gt; global.area_width-25) {
+  x_sweep_dir = -1;
+} else if(x_sweep_x &lt; 25) {
+  x_sweep_dir = 1;
+}
+x_sweep_x += x_sweep_dir * 10;
+instance_create(x_sweep_x, 0, obj_mine);
+
+//1/25 chance to change direction
+if (random(25) &lt; 1) {
+  y_sweep_dir = -y_sweep_dir;
+}
+if (y_sweep_y &gt; global.area_height-25) {
+  y_sweep_dir = -1;
+} else if(y_sweep_y &lt; 25) {
+  y_sweep_dir = 1;
+}
+y_sweep_y += y_sweep_dir * 10;
+instance_create(0, y_sweep_y, obj_mine_sideways);
+
+if alarm_4_count &gt; 1 {
+alarm[4] = 20;
+}
+
+</string>
           </argument>
         </arguments>
       </action>

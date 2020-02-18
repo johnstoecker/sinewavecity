@@ -49,10 +49,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0;
+            <string>//image_speed=0;
 alarm[1]=100;
 shot_by_x = false;
 shot_by_y = false;
+exploding = false;
 </string>
           </argument>
         </arguments>
@@ -139,6 +140,33 @@ shot_by_y = false;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!shot_by_x) {
+  instance_create(x+25,y+25, obj_mine);
+}
+
+if(!shot_by_y) {
+  instance_create(x+25,y+25, obj_mine_sideways);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="1">
       <action>
@@ -222,10 +250,15 @@ shot_by_y = false;
             <kind>1</kind>
             <string>shot_by_y = true;
 
-if (image_speed==0 &amp;&amp; shot_by_x) {
+if(!shot_by_x) {
+  sprite_index = spr_bomb_quarter;
+}
+
+
+if (!exploding &amp;&amp; shot_by_x) {
+  exploding = true;
   score += 5;
-  image_speed=0.25;
-  image_index=10;
+  sprite_index = spr_bomb_explode;
   alarm[0]=8;
 }
 
@@ -253,10 +286,14 @@ if (image_speed==0 &amp;&amp; shot_by_x) {
             <kind>1</kind>
             <string>shot_by_x = true;
 
-if (image_speed==0 &amp;&amp; shot_by_y) {
+if(!shot_by_y) {
+  sprite_index = spr_bomb_half;
+}
+
+if (!exploding &amp;&amp; shot_by_y) {
+  exploding = true;
   score += 5;
-  image_speed=0.25;
-  image_index=10;
+  sprite_index = spr_bomb_explode;
   alarm[0]=8;
 }
 
