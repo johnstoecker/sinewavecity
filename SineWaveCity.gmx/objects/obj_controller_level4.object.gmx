@@ -33,8 +33,29 @@ global.is_railgun_on = true;
 global.railgun_recharge = 0;
 global.railgun_vert_recharge = 0;
 
-alarm_0_count = 24;
+alarm_0_count = 4;
 alarm[0] = 1*room_speed;
+
+
+spiral1 = instance_create(100,100,obj_spiral);
+spiral2 = instance_create(250,100,obj_spiral);
+spiral3 = instance_create(400,100,obj_spiral);
+spiral4 = instance_create(100,250,obj_spiral);
+spiral5 = instance_create(250,250,obj_spiral);
+spiral6 = instance_create(400,250,obj_spiral);
+spiral7 = instance_create(100,400,obj_spiral);
+spiral8 = instance_create(250,400,obj_spiral);
+spiral9 = instance_create(400,400,obj_spiral);
+spirals[0,0] = spiral1;
+spirals[1,0] = spiral2;
+spirals[2,0] = spiral3;
+spirals[0,1] = spiral4;
+spirals[1,1] = spiral5;
+spirals[2,1] = spiral6;
+spirals[0,2] = spiral7;
+spirals[1,2] = spiral8;
+spirals[2,2] = spiral9;
+
 
 </string>
           </argument>
@@ -235,8 +256,31 @@ if (alarm_1_count &gt; 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(100,100,obj_spiral);
+            <string>if alarm_0_count % 2 == 0 {
+  move_direction = 0;
+} else {
+  move_direction = 180;
+}
 
+for(i=0;i&lt;3;i++){
+  for(j=0;j&lt;3;j++){
+    spirals[i, j].speed = 0.3;
+    spirals[i, j].direction = move_direction;
+  }
+}
+
+alarm_0_count --;
+if alarm_0_count &gt; 0 {
+  alarm[0] = 2*room_speed;
+} else {
+  for(i=0;i&lt;3;i++){
+    for(j=0;j&lt;3;j++){
+      spirals[i, j].speed = 0;
+      spirals[i, j].direction = move_direction;
+    }
+  }
+
+}
 </string>
           </argument>
         </arguments>

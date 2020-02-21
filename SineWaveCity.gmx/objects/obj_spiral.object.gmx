@@ -64,6 +64,38 @@ target_image_angle_speed = RESTING_IMAGE_ANGLE_SPEED;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>542</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_sprite_transform</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>0.25</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0.25</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="0">
       <action>
@@ -86,6 +118,7 @@ target_image_angle_speed = RESTING_IMAGE_ANGLE_SPEED;
   instance_create(x,y, obj_mine);
   instance_create(x,y, obj_mine_sideways);
 }
+
 </string>
           </argument>
         </arguments>
@@ -135,7 +168,11 @@ target_image_angle_speed = RESTING_IMAGE_ANGLE_SPEED;
             <string>shot_by_x_countdown -=1;
 shot_by_y_countdown -=1;
 
-if shot_by_x_countdown &lt; 0 &amp;&amp; shot_by_y_countdown &lt; 0 {
+if shot_by_x_countdown &gt; 2 &amp;&amp; shot_by_y_countdown &gt; 2 {
+  target_image_angle_speed = 1;
+}
+
+if shot_by_x_countdown &lt; 0 || shot_by_y_countdown &lt; 0 {
   target_image_angle_speed = 5;
 }
 
