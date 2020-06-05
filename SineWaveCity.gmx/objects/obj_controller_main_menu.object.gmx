@@ -28,6 +28,7 @@
             <string>enum states {
   new_game,
   levels,
+//  settings,
   game_exit
 }
 
@@ -105,13 +106,16 @@ if (left_axis &lt; -0.33 || left_axis &gt; 0.33) &amp;&amp; global.state_change_
      
   obj_new_game.image_index = 0;
   obj_levels.image_index = 0;
-  obj_exit.image_index = 0;  
+  obj_exit.image_index = 0; 
+//  obj_settings.image_index=0;
 
   current_state = current_state % 3;
   if (current_state == states.new_game) {
     obj_new_game.image_index = 1;
   } else if (current_state == states.levels ){
     obj_levels.image_index = 1;
+//  } else if (current_state == states.settings ){
+//    obj_settings.image_index = 1;
   } else if (current_state == states.game_exit ){
     obj_exit.image_index = 1;
   }
@@ -125,6 +129,8 @@ if gamepad_button_check(0, gp_face1) &amp;&amp; allow_input {
     room_goto(room0_intro);
   } else if (current_state == states.levels ){
     room_goto(room_levels_menu);
+//  } else if (current_state == states.settings ){
+//    room_goto(room_settings_menu);
   } else if (current_state == states.game_exit ){
     game_end();
   }

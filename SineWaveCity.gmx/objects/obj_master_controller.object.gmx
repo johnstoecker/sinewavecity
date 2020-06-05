@@ -47,6 +47,7 @@ for (var i = 0; i &lt; gp_num; i++;)
 current_state = paused_menu_states.resume;
 global.points = 10;
 global.max_railgun_recharge = 26;
+instance_create(-5,-5,obj_audio_mixer);
 </string>
           </argument>
         </arguments>
@@ -144,7 +145,15 @@ if (left_axis &lt; -0.33 || left_axis &gt; 0.33) &amp;&amp; global.state_change_
 if gamepad_button_check(0, gp_face1) {
   paused = false;
   if (current_state == paused_menu_states.resume) {
-    room_goto(room_level1);
+    instance_destroy(obj_resume);
+    instance_destroy(obj_exit_to_menu);
+    instance_destroy(obj_gamepad_diagram);
+    
+    if(sprite_exists(screenShot)){
+        sprite_delete(screenShot);
+    }
+    instance_activate_all();
+    audio_resume_all();
   } else if (current_state == paused_menu_states.exit_to_menu ){
     room_goto(room_main_menu);
   }

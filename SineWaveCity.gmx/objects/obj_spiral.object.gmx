@@ -117,33 +117,24 @@ target_image_angle_speed = RESTING_IMAGE_ANGLE_SPEED;
             <string>if image_angle_speed &gt;= 5 {
   instance_create(x,y, obj_mine);
   instance_create(x,y, obj_mine_sideways);
+  alarm[0] = 30;
+} else if image_angle_speed &gt;= 3 {
+  if (shot_by_x_countdown &lt; 0) {
+    instance_create(x,y, obj_mine);
+  }
+  if (shot_by_y_countdown &lt; 0) {
+    instance_create(x,y, obj_mine_sideways);
+  }
+  alarm[0] = 45;
+} else if image_angle_speed &gt;= 2 {
+  alarm[0] = 45;
+} else {
+  alarm[0] = 30;
 }
 
+
+
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>301</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_set_alarm</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>25</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -172,9 +163,19 @@ if shot_by_x_countdown &gt; 2 &amp;&amp; shot_by_y_countdown &gt; 2 {
   target_image_angle_speed = 1;
 }
 
+if shot_by_x_countdown &lt;= 2 || shot_by_y_countdown &lt;= 2 {
+  target_image_angle_speed = 2;
+}
+
 if shot_by_x_countdown &lt; 0 || shot_by_y_countdown &lt; 0 {
+  target_image_angle_speed = 3;
+}
+
+
+if shot_by_x_countdown &lt; 0 &amp;&amp; shot_by_y_countdown &lt; 0 {
   target_image_angle_speed = 5;
 }
+
 
 if image_angle_speed &lt; target_image_angle_speed {
   image_angle_speed += 0.1;
@@ -183,7 +184,7 @@ if image_angle_speed &lt; target_image_angle_speed {
 if image_angle_speed &gt; target_image_angle_speed {
   image_angle_speed -= 0.1;
 }
-
+show_debug_message(target_image_angle_speed);
 image_angle -= image_angle_speed;
 </string>
           </argument>

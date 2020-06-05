@@ -33,11 +33,64 @@ global.is_railgun_on = true;
 global.railgun_recharge = 0;
 global.railgun_vert_recharge = 0;
 
-alarm_0_count = 4;
-alarm[0] = 1*room_speed;
+// horizontal back and forth
+alarm_0_count = 8;
+alarm[0] = 8*room_speed;
+
+// vertical back and forth
+alarm_1_count = 6;
+alarm[1] = 24*room_speed;
+
+// another spiral
+alarm[2] = 37*room_speed;
+
+// spirals go opposite
+alarm_3_count = 7;
+alarm[3] = 40*room_speed;
+
+// spirals go random
+alarm_4_count = 8;
+alarm[4] = 54 * room_speed;
+
+// reset to spiral1
+alarm[5] = 70*room_speed;
+
+// fast and random
+alarm_6_count = 10;
+alarm[6] = 74 * room_speed;
+
+// add nine
+alarm[7] = 94 * room_speed;
+
+// moving nine
+alarm_8_count = 9;
+alarm[8] = 98 * room_speed;
+
+// more moving nine, then destroy
+alarm_9_count = 5;
+alarm[9] = 118*room_speed;
+
+//random ones
+alarm_10_count = 8;
+alarm[10] = 130*room_speed;
+
+alarm_11_count = 8;
+alarm[11] = 146*room_speed;
+
+// random twos
+
+//faster, random walk
 
 
-spiral1 = instance_create(100,100,obj_spiral);
+// 9 moving spirals
+//alarm_9_count = 4;
+//alarm[9] = 1*room_speed;
+
+
+spiral1 = instance_create(200,100,obj_spiral);
+
+/*
+
 spiral2 = instance_create(250,100,obj_spiral);
 spiral3 = instance_create(400,100,obj_spiral);
 spiral4 = instance_create(100,250,obj_spiral);
@@ -56,7 +109,351 @@ spirals[0,2] = spiral7;
 spirals[1,2] = spiral8;
 spirals[2,2] = spiral9;
 
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>211</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>snd_bush_week</sound>
+          </argument>
+          <argument>
+            <kind>3</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (alarm_11_count % 2 == 0){
+if(instance_exists(spiral1)) {
+instance_destroy(spiral1);
+}
+spiral1 = instance_create(random(global.area_width-50)+50,random(global.area_height-50)+50,obj_spiral);
+} else {
+if(instance_exists(spiral2)) {
+instance_destroy(spiral2);
+}
+spiral2 = instance_create(random(global.area_width-50)+50,random(global.area_height-50)+50,obj_spiral);
 
+}
+
+alarm_11_count --;
+if (alarm_11_count &gt; 0) {
+  alarm[11] = 3 * room_speed;
+} else {
+  room_goto(room_level4_outro);
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy(spiral1);
+
+spiral1 = instance_create(random(global.area_width-50)+50,random(global.area_height-50)+50,obj_spiral);
+
+alarm_10_count --;
+if (alarm_10_count &gt; 0) {
+  alarm[10] = 2 * room_speed;
+} else {
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="9">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if alarm_9_count % 2 == 0 {
+  move_direction = 270;
+} else {
+  move_direction = 90;
+}
+
+for(i=0;i&lt;3;i++){
+  for(j=0;j&lt;3;j++){
+    spirals[i, j].speed = 0.3;
+    spirals[i, j].direction = move_direction;
+  }
+}
+
+alarm_9_count --;
+if alarm_9_count &gt; 0 {
+  alarm[9] = 2*room_speed;
+} else {
+  instance_destroy(spiral1);
+  instance_destroy(spiral2);
+  instance_destroy(spiral3);
+  instance_destroy(spiral4);
+  instance_destroy(spiral5);
+  instance_destroy(spiral6);
+  instance_destroy(spiral7);
+  instance_destroy(spiral8);
+  instance_destroy(spiral9);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if alarm_8_count % 2 == 0 {
+  move_direction = 0;
+} else {
+  move_direction = 180;
+}
+
+for(i=0;i&lt;3;i++){
+  for(j=0;j&lt;3;j++){
+    spirals[i, j].speed = 0.3;
+    spirals[i, j].direction = move_direction;
+  }
+}
+
+alarm_8_count --;
+if alarm_8_count &gt; 0 {
+  alarm[8] = 2*room_speed;
+} else {
+  for(i=0;i&lt;3;i++){
+    for(j=0;j&lt;3;j++){
+      spirals[i, j].speed = 0;
+      spirals[i, j].direction = move_direction;
+    }
+  }
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy(spiral1);
+spiral1 = instance_create(200,100,obj_spiral);
+spiral2 = instance_create(350,100,obj_spiral);
+spiral3 = instance_create(500,100,obj_spiral);
+spiral4 = instance_create(200,250,obj_spiral);
+spiral5 = instance_create(350,250,obj_spiral);
+spiral6 = instance_create(500,250,obj_spiral);
+spiral7 = instance_create(200,400,obj_spiral);
+spiral8 = instance_create(350,400,obj_spiral);
+spiral9 = instance_create(500,400,obj_spiral);
+spirals[0,0] = spiral1;
+spirals[1,0] = spiral2;
+spirals[2,0] = spiral3;
+spirals[0,1] = spiral4;
+spirals[1,1] = spiral5;
+spirals[2,1] = spiral6;
+spirals[0,2] = spiral7;
+spirals[1,2] = spiral8;
+spirals[2,2] = spiral9;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (spiral1.x &gt; global.area_width - 50 ||
+spiral1.x &lt; 50 || spiral1.y &lt; 50 ||
+spiral1.y &gt; global.area_height - 50) {
+move_direction = point_direction(spiral1.x, spiral1.y, global.area_height/2, global.area_height/2)
+} else {
+move_direction = random(360);
+}
+
+spiral1.speed = 1;
+spiral1.direction = move_direction;
+
+alarm_6_count --;
+if alarm_6_count &gt; 0 {
+  alarm[6] = 2*room_speed;
+} else {
+  spiral1.speed = 0;
+  spiral1.direction = move_direction;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy(spiral1);
+instance_destroy(spiral2);
+
+spiral1 = instance_create(300,200,obj_spiral);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>move_direction = random(360);
+
+for(i=0;i&lt;2;i++){
+  for(j=0;j&lt;1;j++){
+    spirals[i, j].speed = 0.3;
+    spirals[i, j].direction = move_direction;
+  }
+}
+
+alarm_4_count --;
+if alarm_4_count &gt; 0 {
+  alarm[4] = 2*room_speed;
+} else {
+  for(i=0;i&lt;2;i++){
+    for(j=0;j&lt;1;j++){
+      spirals[i, j].speed = 0;
+      spirals[i, j].direction = move_direction;
+    }
+  }
+
+}
 </string>
           </argument>
         </arguments>
@@ -79,51 +476,33 @@ spirals[2,2] = spiral9;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm_3_count--;
-if (alarm_3_count &gt; 0){
-    var x_1 = random(global.area_width);
-    var x_2 = random(global.area_width);
-    var x_begin = min(x_1, x_2);
-    var x_end = max(x_1, x_2);
-    var width = x_end - x_begin;
-    //how many lasers to spawn
-    var num = 2;
-    if (width &lt; num * global.min_sine_width) {
-        num = 1;
-    }
-    
-    {
-    var i;
-    for (i = 0; i &lt; num; i += 1)
-       {
-       instance_create(width/num * i + x_begin, 0, obj_mine);
-       }
-    }
-
-    var y_1 = random(global.area_height);
-    var y_2 = random(global.area_height);
-    var y_begin = min(y_1, y_2);
-    var y_end = max(y_1, y_2);
-    var height = y_end - y_begin;
-    //how many lasers to spawn
-    var num = 2;
-    show_debug_message(global.min_sine_height);
-    show_debug_message(height);
-    if (height &lt; num * global.min_sine_height) {
-        num = 1;
-    }
-    
-    {
-    var i;
-    for (i = 0; i &lt; num; i += 1)
-       {
-       instance_create(0, height/num * i + y_begin, obj_mine_sideways);
-       }
-    }
-    alarm[3] = 2*room_speed;
-
+            <string>if alarm_3_count % 2 == 0 {
+  move_direction_1 = 0;
+  move_direction_2 = 180;
+} else {
+  move_direction_1 = 180;
+  move_direction_2 = 0;
 }
 
+
+spiral1.speed = 0.4;
+spiral1.direction = move_direction_1;
+spiral2.speed = 0.4;
+spiral2.direction = move_direction_2;
+
+
+alarm_3_count --;
+if alarm_3_count &gt; 0 {
+  alarm[3] = 2*room_speed;
+} else {
+  for(i=0;i&lt;2;i++){
+    for(j=0;j&lt;1;j++){
+      spirals[i, j].speed = 0;
+      spirals[i, j].direction = move_direction_1;
+    }
+  }
+
+}
 </string>
           </argument>
         </arguments>
@@ -146,24 +525,10 @@ if (alarm_3_count &gt; 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm_2_count--;
-if (alarm_2_count % 2 == 0) {
-  var x_1 = random(400);
-  var bomb = instance_create(x_1, 0, obj_bomb_both);
-  with(bomb) {
-    direction = 270;
-  }
-} else {
-  var y_1 = random(250);
-  var bomb = instance_create(0, y_1, obj_bomb_both);
-  with(bomb) {
-    direction = 0;
-    alarm[1] = 180;
-  }
-}
-if (alarm_2_count &gt; 0) {
-  alarm[2] = 2*room_speed;
-}
+            <string>spiral2 = instance_create(spiral1.x+200,spiral1.y,obj_spiral);
+spirals[0,0] = spiral1;
+spirals[1,0] = spiral2;
+
 </string>
           </argument>
         </arguments>
@@ -186,54 +551,23 @@ if (alarm_2_count &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm_1_count--;
-if (alarm_1_count &gt; 0){
-    var x_1 = random(global.area_width);
-    var x_2 = random(global.area_width);
-    var x_begin = min(x_1, x_2);
-    var x_end = max(x_1, x_2);
-    var width = x_end - x_begin;
-    //how many lasers to spawn
-    var num = 2;
-    if (width &lt; num * global.min_sine_width) {
-        num = 1;
-    }
-    
-    {
-    var i;
-    for (i = 0; i &lt; num; i += 1)
-       {
-       instance_create(width/num * i + x_begin, 0, obj_mine);
-       }
-    }
-
-    var y_1 = random(global.area_height);
-    var y_2 = random(global.area_height);
-    var y_begin = min(y_1, y_2);
-    var y_end = max(y_1, y_2);
-    var height = y_end - y_begin;
-    //how many lasers to spawn
-    var num = 1;
-    if (alarm_1_count &lt; 8) {
-      num = 2;
-    }
-    show_debug_message(global.min_sine_height);
-    show_debug_message(height);
-    if (height &lt; num * global.min_sine_height) {
-        num = 1;
-    }
-    
-    {
-    var i;
-    for (i = 0; i &lt; num; i += 1)
-       {
-       instance_create(0, height/num * i + y_begin, obj_mine_sideways);
-       }
-    }
-    alarm[1] = 4*room_speed;
-
+            <string>if alarm_1_count % 2 == 0 {
+  move_direction = 270;
+} else {
+  move_direction = 90;
 }
 
+spiral1.speed = 1;
+spiral1.direction = move_direction;
+
+alarm_1_count --;
+if alarm_1_count &gt; 0 {
+  alarm[1] = 2*room_speed;
+} else {
+    spiral1.speed = 0;
+    spiral1.direction = move_direction;
+
+}
 </string>
           </argument>
         </arguments>
@@ -262,23 +596,15 @@ if (alarm_1_count &gt; 0){
   move_direction = 180;
 }
 
-for(i=0;i&lt;3;i++){
-  for(j=0;j&lt;3;j++){
-    spirals[i, j].speed = 0.3;
-    spirals[i, j].direction = move_direction;
-  }
-}
+spiral1.speed = 1;
+spiral1.direction = move_direction;
 
 alarm_0_count --;
 if alarm_0_count &gt; 0 {
   alarm[0] = 2*room_speed;
 } else {
-  for(i=0;i&lt;3;i++){
-    for(j=0;j&lt;3;j++){
-      spirals[i, j].speed = 0;
-      spirals[i, j].direction = move_direction;
-    }
-  }
+    spiral1.speed = 0;
+    spiral1.direction = move_direction;
 
 }
 </string>

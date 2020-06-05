@@ -147,7 +147,7 @@
   image_speed=1;
   alarm[0]=9;
 }
-
+playSoundEffect(snd_explosion);
 </string>
           </argument>
         </arguments>
@@ -179,7 +179,7 @@
     global.railgun_recharge += 1;
   }
 }
-
+playSoundEffect(snd_defend);
 </string>
           </argument>
         </arguments>

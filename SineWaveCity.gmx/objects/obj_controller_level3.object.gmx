@@ -63,10 +63,11 @@ if (random(10) &lt; 5) {
   y_sweep_dir = -1;
 }
 
-alarm_5_count = 48;
+alarm_5_count = 14;
 alarm[5] = 152*room_speed;
 
-alarm[6] = 195*room_speed;
+alarm[6] = 184*room_speed;
+
 //0,16
 
 //33, driving starts
@@ -199,7 +200,7 @@ if (alarm_5_count &gt; 0){
        instance_create(0, height/num * i + y_begin, obj_mine_sideways);
        }
     }
-    alarm[3] = 2*room_speed;
+    alarm[5] = 2*room_speed;
 
 }
 

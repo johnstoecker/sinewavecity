@@ -164,7 +164,7 @@ obj_sine.depth = -1;
             <kind>1</kind>
             <string>obj_speech_mayor.mayor_speech = "";
 obj_speech_mayor.typed_letters = 0;
-obj_speech_mayor.mayor_speech = "Defend against#all attacks in#X- and Y-Space!";
+obj_speech_mayor.mayor_speech = "Defend against#all attacks in#X- and Y-#Space!";
 </string>
           </argument>
         </arguments>

@@ -8,6 +8,9 @@
     <sound>sound\snd_warm_vacuum_admiral_bob</sound>
     <sound>sound\snd_night_lights</sound>
     <sound>sound\snd_no_artificial_flavoring</sound>
+    <sound>sound\snd_explosion</sound>
+    <sound>sound\snd_defend</sound>
+    <sound>sound\snd_bush_week</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_sine</sprite>
@@ -44,10 +47,14 @@
       <sprite>sprites\spr_large_4</sprite>
       <sprite>sprites\spr_resume</sprite>
       <sprite>sprites\spr_game_over</sprite>
+      <sprite>sprites\spr_settings</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\playSoundEffect.gml</script>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
     <font>fonts\font1</font>
@@ -74,6 +81,7 @@
       <object>objects\obj_game_over_controller</object>
       <object>objects\obj_controller_main_menu</object>
       <object>objects\obj_controller_levels_menu</object>
+      <object>objects\obj_controller_settings_menu</object>
       <object>objects\obj_controller_intro</object>
       <object>objects\obj_controller_level1</object>
       <object>objects\object_controller_level1_outro</object>
@@ -81,6 +89,7 @@
       <object>objects\obj_controller_level2_outro</object>
       <object>objects\obj_controller_level3</object>
       <object>objects\obj_controller_level3_outro</object>
+      <object>objects\obj_controller_level4_outro</object>
       <object>objects\obj_controller_level4</object>
     </objects>
     <objects name="story_objects">
@@ -94,6 +103,7 @@
     <objects name="menu_objects">
       <object>objects\obj_new_game</object>
       <object>objects\obj_levels</object>
+      <object>objects\obj_settings</object>
       <object>objects\obj_exit</object>
       <object>objects\obj_back</object>
       <object>objects\obj_large_1</object>
@@ -104,6 +114,7 @@
       <object>objects\obj_exit_to_menu</object>
       <object>objects\obj_game_over</object>
     </objects>
+    <object>objects\obj_audio_mixer</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tml_intro</timeline>
@@ -113,10 +124,13 @@
     <timeline>timelines\tml_lvl1_outro</timeline>
     <timeline>timelines\tml_lvl2_outro</timeline>
     <timeline>timelines\tml_lvl3_outro</timeline>
+    <timeline>timelines\tml_lvl4_outro</timeline>
   </timelines>
   <rooms name="rooms">
     <room>rooms\room_main_menu</room>
+    <room>rooms\new_room_main_menu</room>
     <room>rooms\room_levels_menu</room>
+    <room>rooms\room_settings_menu</room>
     <room>rooms\room0_intro</room>
     <room>rooms\room_level1</room>
     <room>rooms\room_level1_outro</room>
@@ -125,6 +139,7 @@
     <room>rooms\room_level3</room>
     <room>rooms\room_level3_outro</room>
     <room>rooms\room_level4</room>
+    <room>rooms\room_level4_outro</room>
     <room>rooms\room_game_over</room>
   </rooms>
   <help>
