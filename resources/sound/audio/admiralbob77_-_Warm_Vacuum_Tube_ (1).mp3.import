@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/admiralbob77_-_Warm_Vacuum_Tube_ (1).mp3-bae0c4c97cd8ef50fc5a5b3bf4ee9d12.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/admiralbob77_-_Warm_Vacuum_Tube_ (1).mp3"
+dest_files=[ "res://.import/admiralbob77_-_Warm_Vacuum_Tube_ (1).mp3-bae0c4c97cd8ef50fc5a5b3bf4ee9d12.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

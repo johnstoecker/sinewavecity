@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EVA - Turtleneck.mp3-9613a269a9333f1b08b711f2935f142c.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/EVA - Turtleneck.mp3"
+dest_files=[ "res://.import/EVA - Turtleneck.mp3-9613a269a9333f1b08b711f2935f142c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

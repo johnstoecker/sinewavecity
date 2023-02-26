@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snd_no_artificial_flavoring.mp3-9d07894a5509a8b2b74047a60374005f.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/snd_no_artificial_flavoring.mp3"
+dest_files=[ "res://.import/snd_no_artificial_flavoring.mp3-9d07894a5509a8b2b74047a60374005f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

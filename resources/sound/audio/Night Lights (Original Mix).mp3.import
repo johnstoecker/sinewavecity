@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Night Lights (Original Mix).mp3-e103d0e3835e2b31505cd6f352818ff6.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/Night Lights (Original Mix).mp3"
+dest_files=[ "res://.import/Night Lights (Original Mix).mp3-e103d0e3835e2b31505cd6f352818ff6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

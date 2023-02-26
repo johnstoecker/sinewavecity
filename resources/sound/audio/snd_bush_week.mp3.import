@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snd_bush_week.mp3-9c0098afccce17b3f237c984958fbb13.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/snd_bush_week.mp3"
+dest_files=[ "res://.import/snd_bush_week.mp3-9c0098afccce17b3f237c984958fbb13.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

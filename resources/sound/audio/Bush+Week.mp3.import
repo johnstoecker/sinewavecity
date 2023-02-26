@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bush+Week.mp3-b7093bcc46fa3a9a5babd2b5252116c5.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/Bush+Week.mp3"
+dest_files=[ "res://.import/Bush+Week.mp3-b7093bcc46fa3a9a5babd2b5252116c5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

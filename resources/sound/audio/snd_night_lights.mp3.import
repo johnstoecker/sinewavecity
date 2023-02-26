@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snd_night_lights.mp3-2b56f082d9714049b2a5627b7241b0da.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/snd_night_lights.mp3"
+dest_files=[ "res://.import/snd_night_lights.mp3-2b56f082d9714049b2a5627b7241b0da.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

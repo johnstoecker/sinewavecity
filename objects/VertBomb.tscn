@@ -1,0 +1,42 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_18.png" type="Texture" id=1]
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_10.png" type="Texture" id=2]
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_0.png" type="Texture" id=3]
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_11.png" type="Texture" id=4]
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_15.png" type="Texture" id=5]
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_12.png" type="Texture" id=6]
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_16.png" type="Texture" id=7]
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_17.png" type="Texture" id=8]
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_13.png" type="Texture" id=9]
+[ext_resource path="res://resources/sprites/images/spr_laser_yellow_14.png" type="Texture" id=10]
+[ext_resource path="res://objects/VertBomb.gd" type="Script" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "explosion",
+"speed": 1.0
+} ]
+
+[node name="VertBomb" type="KinematicBody2D"]
+script = ExtResource( 11 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 6.5, -8.7, 8.5, -6.6, 8.5, 3.5, 6.9, 3.5, 4.9, 7.5, -1.6, 7.5, -4.5, 4.6, -4.5, 2, -5.7, -7.5, -3.9, -7.5, -3.5, -8.3, -3.5, -11.5, 6.5, -11.5 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true

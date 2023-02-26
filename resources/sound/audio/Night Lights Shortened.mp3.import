@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Night Lights Shortened.mp3-917d1bd6e70e55bb54aa62b124406320.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/Night Lights Shortened.mp3"
+dest_files=[ "res://.import/Night Lights Shortened.mp3-917d1bd6e70e55bb54aa62b124406320.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

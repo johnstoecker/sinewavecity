@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EVA - No Artificial Flavoring.mp3-30c434ca9f194792deee4a9e05c126d6.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/EVA - No Artificial Flavoring.mp3"
+dest_files=[ "res://.import/EVA - No Artificial Flavoring.mp3-30c434ca9f194792deee4a9e05c126d6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

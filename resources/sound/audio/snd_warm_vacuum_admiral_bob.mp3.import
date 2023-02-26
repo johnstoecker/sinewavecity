@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snd_warm_vacuum_admiral_bob.mp3-3b79d76ae296708bbf7f0a1498d89f8a.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/snd_warm_vacuum_admiral_bob.mp3"
+dest_files=[ "res://.import/snd_warm_vacuum_admiral_bob.mp3-3b79d76ae296708bbf7f0a1498d89f8a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

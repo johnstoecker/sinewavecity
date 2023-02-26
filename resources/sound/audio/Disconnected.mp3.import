@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Disconnected.mp3-6bfa0e88efc3d05ed6b8a5e2ea3c5b28.mp3str"
+
+[deps]
+
+source_file="res://resources/sound/audio/Disconnected.mp3"
+dest_files=[ "res://.import/Disconnected.mp3-6bfa0e88efc3d05ed6b8a5e2ea3c5b28.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
