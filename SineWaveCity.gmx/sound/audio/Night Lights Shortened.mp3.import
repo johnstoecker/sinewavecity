@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Night Lights Shortened.mp3-79473bc6a635d5bc5f8e3118fec4793c.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/Night Lights Shortened.mp3"
+dest_files=[ "res://.import/Night Lights Shortened.mp3-79473bc6a635d5bc5f8e3118fec4793c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

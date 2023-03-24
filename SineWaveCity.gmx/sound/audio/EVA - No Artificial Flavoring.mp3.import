@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EVA - No Artificial Flavoring.mp3-204dad1cc80e623e0dd635fad9a05d7a.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/EVA - No Artificial Flavoring.mp3"
+dest_files=[ "res://.import/EVA - No Artificial Flavoring.mp3-204dad1cc80e623e0dd635fad9a05d7a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

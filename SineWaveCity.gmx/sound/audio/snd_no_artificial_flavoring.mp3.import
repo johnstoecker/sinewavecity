@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snd_no_artificial_flavoring.mp3-a9da5ca101449c5bea04b63c74896f86.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/snd_no_artificial_flavoring.mp3"
+dest_files=[ "res://.import/snd_no_artificial_flavoring.mp3-a9da5ca101449c5bea04b63c74896f86.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

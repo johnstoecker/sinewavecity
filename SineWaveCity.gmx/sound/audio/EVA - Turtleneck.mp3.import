@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EVA - Turtleneck.mp3-d304cad22654e21dbc943ead9734ea80.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/EVA - Turtleneck.mp3"
+dest_files=[ "res://.import/EVA - Turtleneck.mp3-d304cad22654e21dbc943ead9734ea80.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

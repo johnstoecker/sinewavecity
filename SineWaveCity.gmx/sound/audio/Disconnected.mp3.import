@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Disconnected.mp3-61c3b012f9f30f8dcce25bd53c8e6c46.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/Disconnected.mp3"
+dest_files=[ "res://.import/Disconnected.mp3-61c3b012f9f30f8dcce25bd53c8e6c46.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

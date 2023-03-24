@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Night Lights (Original Mix).mp3-ab76e2b4129818efe97893da3e543438.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/Night Lights (Original Mix).mp3"
+dest_files=[ "res://.import/Night Lights (Original Mix).mp3-ab76e2b4129818efe97893da3e543438.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

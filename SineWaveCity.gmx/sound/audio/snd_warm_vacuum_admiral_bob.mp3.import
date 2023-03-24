@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snd_warm_vacuum_admiral_bob.mp3-9e8107e0e612ec2cc1eda7190a4d3052.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/snd_warm_vacuum_admiral_bob.mp3"
+dest_files=[ "res://.import/snd_warm_vacuum_admiral_bob.mp3-9e8107e0e612ec2cc1eda7190a4d3052.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

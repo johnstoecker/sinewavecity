@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bush+Week_shortened.mp3-ed8a2625be8bad0687143868daac8d1d.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/Bush+Week_shortened.mp3"
+dest_files=[ "res://.import/Bush+Week_shortened.mp3-ed8a2625be8bad0687143868daac8d1d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

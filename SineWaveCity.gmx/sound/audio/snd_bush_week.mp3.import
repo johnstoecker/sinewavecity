@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snd_bush_week.mp3-4227147182583602151af265405bd70d.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/snd_bush_week.mp3"
+dest_files=[ "res://.import/snd_bush_week.mp3-4227147182583602151af265405bd70d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

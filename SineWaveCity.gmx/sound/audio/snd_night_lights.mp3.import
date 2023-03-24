@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snd_night_lights.mp3-852bcc27cdfdb12c8856b6a434c5fe77.mp3str"
+
+[deps]
+
+source_file="res://SineWaveCity.gmx/sound/audio/snd_night_lights.mp3"
+dest_files=[ "res://.import/snd_night_lights.mp3-852bcc27cdfdb12c8856b6a434c5fe77.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
