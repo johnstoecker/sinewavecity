@@ -28,6 +28,7 @@ func startGame():
 	$MainMenu.queue_free()
 	$GameScene.show()
 	get_tree().change_scene("res://GameScene.tscn")
+	$GameScene.start_game()
 
 
 func saveLevel(value):
