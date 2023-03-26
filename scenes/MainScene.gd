@@ -26,8 +26,8 @@ func getDataFromCookies():
 
 func startGame():
 	$MainMenu.queue_free()
-	$GameScene.show()
 	get_tree().change_scene("res://GameScene.tscn")
+	$GameScene.show()
 	$GameScene.start_game()
 
 

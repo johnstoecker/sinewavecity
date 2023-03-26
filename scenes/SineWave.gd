@@ -8,6 +8,10 @@ extends KinematicBody2D
 var currentWaveWidth = 100
 var originalWidth = 100
 var xStart = 500
+var lastRailgunFire = 0
+
+var railGunnerScene = preload("res://objects/RailGunner.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,6 +42,8 @@ func get_input():
 		if scale.x < max_scale:
 			scale.x *= 1.05
 			currentWaveWidth = originalWidth * scale.x
+	if Input.is_action_pressed("space"):
+		fireRailGun()
 	movement = movement * speed
 	position.x += movement
 	
@@ -61,7 +67,19 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 #	move_and_slide(movement)
-#	for i in get_slide_count():
-#		var collision = get_slide_collision(i)
-#		print("Collided with: ", collision.collider.name)
-##		collision.collider.explode()
+
+func fireRailGun():
+	var timeNow = OS.get_ticks_msec()
+	var timeElapsed = timeNow - lastRailgunFire
+	# TODO: constant for railgun cooldown
+	if timeElapsed > 300:
+		lastRailgunFire = timeNow
+		# 12 sine wave peaks
+		for i in 12:
+			var newRailGunner = railGunnerScene.instance()
+			#newBomb.position.x = rng.randi_range(200,get_viewport().size.x - 200)
+			newRailGunner.position.x = position.x + currentWaveWidth*(i-6)
+			newRailGunner.position.y = position.y
+			get_parent().add_child(newRailGunner)
+
+

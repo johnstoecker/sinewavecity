@@ -13,4 +13,4 @@ func hit():
 	$CanvasLayer/Label.text = "Score: "+str(points)
 
 func start_game():
-	$LevelSpawner.startLevel(2);
+	$LevelSpawner.startLevel(1);
