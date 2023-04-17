@@ -1,36 +1,51 @@
-extends KinematicBody2D
+extends Area2D
 
 
 var movement = Vector2(0, 1)
 var speed = 200
+var hasCollidedWithSineWave = false
+var hasCollidedWithCity = false
+var hasCollidedWithRailGunner = false
+var hasCollidedWithVertRailGunner = false
+var hasCollidedWithHorizRailGunner = false
+var isHorizontal = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	movement = movement.normalized() * speed
+	connect("body_entered", self, "_on_Area_body_entered")
+
+func setHorizontal(val):
+	isHorizontal = true
+
+func _on_Area_body_entered(body:Node) -> void:
+	# dont care about colliding with other lasers
+	if body.name == "SineWave":
+		hasCollidedWithSineWave = true
+	if body.name == "CityCollision":
+		hasCollidedWithCity = true
+	if body.name.find("Railgunner") != -1:
+		hasCollidedWithRailGunner= true
+		if body.isHorizontal():
+			hasCollidedWithHorizRailGunner = true
+		else:
+			hasCollidedWithVertRailGunner = true
 
 func _physics_process(delta):
-	move_and_slide(movement)
-	var hasCollidedWithSineWave = false
-	var hasCollidedWithCity = false
-	var hasCollidedWithRailGunner = false
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		print(collision.collider.name)
-		# dont care about colliding with other lasers
-		if collision.collider.name == "SineWave":
-			hasCollidedWithSineWave = true
-		if collision.collider.name == "CityCollision":
-			hasCollidedWithCity = true
-		if collision.collider.name.find("Railgunner") != -1:
-			hasCollidedWithRailGunner= true
+	if isHorizontal:
+		position.x = position.x + delta * speed
+	else:
+		position.y = position.y + delta * speed
+#	move_and_slide(movement)
 			
 	if hasCollidedWithCity:
 		destroy()
-		get_tree().get_root().get_child(0).get_child(0).hit()
+		get_tree().get_root().get_child(0).hit()
 		set_physics_process(false)
-	elif hasCollidedWithSineWave || hasCollidedWithRailGunner:
+	elif hasCollidedWithSineWave || (isHorizontal && hasCollidedWithHorizRailGunner) || (!isHorizontal && hasCollidedWithVertRailGunner):
 		explode()
 		set_physics_process(false)
+	
 
 func remove():
 	$Timer.start(1)
@@ -44,7 +59,6 @@ func destroy():
 	$Sprite.visible = false	
 	$AnimatedSprite.visible = true
 	$CollisionPolygon2D.disabled = true
-	# TODO: why is this not going
 	$AnimatedSprite.play("destroy")
 	remove()
 	

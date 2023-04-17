@@ -6,7 +6,6 @@ var lastSpawn = 0;
 
 var currentSpawnRate = 0;
 
-var levelStart = 0
 var currentStep = 0;
 
 # if we need to do any init on the next state, set to false
@@ -34,7 +33,7 @@ var mineSpawnerScene = preload("res://objects/MineSpawner.tscn")
 var levelData = [
 	{ "ends": 10, "state": STATE_IDLE },
 	# a few mines
-	{ "ends": 30000, "state": MINE_SPAWN, "maxConcurrentMines": 1, "minConcurrentMines": 1, "spawnRate": 2000 },
+	{ "ends": 30000, "state": MINE_SPAWN, "maxConcurrentMines": 1, "minConcurrentMines": 1, "spawnRate": 2000, "isHorizontal": true },
 	{ "ends": 100000, "state": STATE_IDLE }
 ]
 
@@ -42,8 +41,6 @@ func _ready():
 	rng.randomize()
 
 func startLevel():
-	print("starting level...")
-	levelStart = OS.get_ticks_msec()
 	currentStep = 0;
 	currentState = STATE_IDLE;
 	lastSpawn = 0;
@@ -51,10 +48,9 @@ func startLevel():
 	print("starting leve....")
 	
 	
-func doProcess():
+func doProcess(timeElapsed):
 	isStateInit = false;
 	var timeNow = OS.get_ticks_msec()
-	var timeElapsed = timeNow - levelStart
 	if timeElapsed > levelData[currentStep]["ends"]:
 		print("switching to new state")
 		currentStep += 1
@@ -99,6 +95,8 @@ func doMineSpawn(timeElapsed):
 		var currentX = xLeft;
 		for n in num:
 			var newMine = mineSpawnerScene.instance()
+			if levelData[currentStep]["isHorizontal"]:
+				newMine.setAdvanced()
 			#newBomb.position.x = rng.randi_range(200,get_viewport().size.x - 200)
 			newMine.position.x = currentX
 			add_child(newMine)

@@ -25,14 +25,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 18 ), ExtResource( 12 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "destroy",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "explosion",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 12 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "destroy",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -41,7 +41,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="VertBomb" type="KinematicBody2D"]
+[node name="VertBomb" type="Area2D"]
 script = ExtResource( 11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -61,6 +61,8 @@ one_shot = true
 
 [node name="SndDestroy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
+volume_db = -45.0
 
 [node name="SndDefend" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 22 )
+volume_db = -45.0

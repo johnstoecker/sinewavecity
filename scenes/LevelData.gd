@@ -10,6 +10,9 @@ var levelStart = 0;
 var currentLevel = -1;
 var currentStep = 0;
 
+#keep track of current pause time
+var currentPauseTime
+
 # if we need to do any init on the next state, set to false
 # (set sweep direction, etc)
 var isStateInit = false;
@@ -37,26 +40,40 @@ var currentLevelObject
 
 func _ready():
 	rng.randomize()
-	levelObjects = [$Level1Spawner, $Level2Spawner]
+	levelObjects = [$Level1Spawner, $Level2Spawner, $Level3Spawner]
 	currentLevelObject = $Level1Spawner
 
 func startLevel(level):
 	currentLevelObject = levelObjects[level-1]	
-		
-	print("starting level...")
 	levelStart = OS.get_ticks_msec()
 	currentLevel = level;
 	currentStep = 0;
 	currentState = STATE_IDLE;
 	lastSpawn = 0;
 	isStateInit = false;
-	print("starting leve....")
 	
+func pauseLevel(level):
+	currentPauseTime = OS.get_ticks_msec()
+	currentLevelObject = levelObjects[level-1]
+	currentLevelObject.pause()
+
+func unPauseLevel(level):
+	var unPauseTime = OS.get_ticks_msec()
+	var pauseElapsed = unPauseTime - currentPauseTime
+	levelStart = levelStart + pauseElapsed
+	currentPauseTime = null
+	currentLevelObject = levelObjects[level-1]
+	currentLevelObject.unPause()
+
+func stop():
+	currentLevel = -1;
 	
 func _process(delta):
+	var timeNow = OS.get_ticks_msec()
+	var timeElapsed = timeNow - levelStart
 	if currentLevel == -1:
 		return
-	currentLevelObject.doProcess()
+	currentLevelObject.doProcess(timeElapsed)
 	
 func finish_level():
 	# TODO: next level

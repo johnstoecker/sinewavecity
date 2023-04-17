@@ -5,12 +5,43 @@ var current_level
 var points = 100
 
 func _ready():
-	$CanvasLayer/Label.text = "Score: 100"
+	$Score/Label.text = "Score: 100"
 	pass
 
 func hit():
 	points -= 1
-	$CanvasLayer/Label.text = "Score: "+str(points)
+	$Score/Label.text = "Score: "+str(points)
+
+# meta level stuff:
+# level 1: just regular sine wave, lasers
+# level 2: regular since wave, mine spawner + introduce beam
+# level 3: vertical sine wave, double mine spawner
+# level 4: spinny thing
 
 func start_game():
-	$LevelSpawner.startLevel(1);
+	current_level = 3
+	start_level(3)
+
+func unpause():
+	print("unpausing")
+
+func pause():
+	print("pausing")
+#	$LevelSpawner.pauseLevel()
+#	$AudioPlayer.pauseSound()
+
+func stop():
+	$AudioPlayer.stopSound()
+	$LevelSpawner.stop()
+
+func start_level(level):
+	if level == 1:
+		$VertSineWave.visible = false
+	elif level ==2:
+		$VertSineWave.visible = false
+	elif level ==3 :
+		$VertSineWave.visible = true
+	elif level ==4:
+		$VertSineWave.visible = true
+	$LevelSpawner.startLevel(level)
+	$AudioPlayer.playSound(level)

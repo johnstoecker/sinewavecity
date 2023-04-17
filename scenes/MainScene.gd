@@ -2,6 +2,9 @@ extends Node2D
 
 var data = {}
 
+var isPaused = false
+var inGame = false
+
 func _ready():
 	$GameScene.hide()
 	data = getDataFromCookies()
@@ -25,11 +28,21 @@ func getDataFromCookies():
 	return result
 
 func startGame():
-	$MainMenu.queue_free()
-	get_tree().change_scene("res://GameScene.tscn")
+	print("starting game....")
+	inGame = true
+	$MainMenu.visible = false
+#	get_tree().change_scene("res://GameScene.tscn")
 	$GameScene.show()
 	$GameScene.start_game()
 
+func showMainMenu():
+	$GameScene.stop()
+	$Opacity.visible = false
+	$PauseMenu.visible = false
+	inGame = false
+	$GameScene.visible = false
+	$MainMenu.visible = true
+	$MainMenu/Control/VBoxContainer/NewGame.grab_focus()
 
 func saveLevel(value):
 	data["current_level"] = value
@@ -39,3 +52,27 @@ func getLevel():
 	print("got value %s for key %s" % [data.get("current_level", 1), "current_level"])
 	# default to level 1
 	return data.get("current_level", 1)
+
+func pause():
+	$Opacity.visible = true
+	$PauseMenu.pause()
+	$GameScene.pause()
+	
+func unpause():
+	$Opacity.visible = false
+	$GameScene.unpause()
+	$PauseMenu.unpause()
+
+func escapePressed():
+	if inGame:
+		if isPaused:
+			unpause()
+		else:
+			pause()
+		isPaused = !isPaused
+	else:
+		get_tree().quit()
+		
+
+func hit():
+	$GameScene.hit()

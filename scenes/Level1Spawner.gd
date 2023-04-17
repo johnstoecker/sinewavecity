@@ -6,7 +6,6 @@ var lastSpawn = 0;
 
 var currentSpawnRate = 0;
 
-var levelStart = 0
 var currentStep = 0;
 
 # if we need to do any init on the next state, set to false
@@ -34,13 +33,13 @@ var vertBombScene = preload("res://objects/VertBomb.tscn")
 var levelData = [
 	{ "ends": 10, "state": STATE_IDLE },
 	# a few lasers
-	{ "ends": 1000, "state": STATE_RANDOM_SPAWN, "maxConcurrentLasers": 1, "minConcurrentLasers": 1, "spawnRate": 1000 },
+	{ "ends": 1000, "state": STATE_RANDOM_SPAWN, "maxConcurrentLasers": 1, "minConcurrentLasers": 1, "spawnRate": 2000 },
 	# more, sometimes 2 at once
-	{ "ends": 10000, "state": STATE_RANDOM_SPAWN, "maxConcurrentLasers": 2,  "minConcurrentLasers": 1, "spawnRate": 1000 },
+	{ "ends": 10000, "state": STATE_RANDOM_SPAWN, "maxConcurrentLasers": 2,  "minConcurrentLasers": 1, "spawnRate": 2000 },
 	# more, sometimes 3 at once
 	{ "ends": 20000, "state": STATE_RANDOM_SPAWN, "maxConcurrentLasers": 3, "minConcurrentLasers": 1,  "spawnRate": 1000 },
 	# rising action
-	{ "ends": 30000, "state": STATE_RANDOM_SPAWN, "maxConcurrentLasers": 3,  "minConcurrentLasers": 1, "spawnRate": 500 },
+	{ "ends": 30000, "state": STATE_RANDOM_SPAWN, "maxConcurrentLasers": 3,  "minConcurrentLasers": 2, "spawnRate": 1000 },
 	# going for it -- sweeps
 	{ "ends": 40000, "state": STATE_SWEEP, "spawnRate": 150 },
 	# double sweeps
@@ -61,7 +60,6 @@ func _ready():
 
 func startLevel():
 	print("starting level...")
-	levelStart = OS.get_ticks_msec()
 	currentStep = 0;
 	currentState = STATE_IDLE;
 	lastSpawn = 0;
@@ -69,10 +67,8 @@ func startLevel():
 	print("starting leve....")
 	
 	
-func doProcess():
+func doProcess(timeElapsed):
 	isStateInit = false;
-	var timeNow = OS.get_ticks_msec()
-	var timeElapsed = timeNow - levelStart
 	if timeElapsed > levelData[currentStep]["ends"]:
 		print("switching to new state")
 		currentStep += 1
@@ -93,9 +89,9 @@ func doProcess():
 		doMiddlePulseRandomSpawn(timeElapsed)
 	else:
 		print("!!!!oops!!!")
-	
-	
-	
+
+
+
 func doRandomSpawn(timeElapsed):
 	if timeElapsed - lastSpawn > levelData[currentStep]["spawnRate"]:
 		var minConcurrentLasers = levelData[currentStep]["minConcurrentLasers"]
@@ -106,11 +102,10 @@ func doRandomSpawn(timeElapsed):
 		var x1 = rng.randi_range(0,get_viewport().size.x)
 		var x2 = rng.randi_range(0,get_viewport().size.x)
 		# get leftmost laser x pos
-		var xLeft = min(x1, x2)
+		var xLeft = min(x1, x2)+5
 		# get rightmost laser x pos
-		var xRight = max(x1, x2)
+		var xRight = max(x1, x2)-1
 		var width = (xRight - xLeft)
-		
 		# get spacing between each laser, avoid dividing by zero
 		if num > 1:
 			width = width/(num-1)
@@ -124,6 +119,7 @@ func doRandomSpawn(timeElapsed):
 			#newBomb.position.x = rng.randi_range(200,get_viewport().size.x - 200)
 			newBomb.position.x = currentX
 			add_child(newBomb)
+			newBomb.owner = get_parent()
 			currentX = currentX + width
 		lastSpawn = timeElapsed
 	
@@ -140,6 +136,7 @@ func doSweep(timeElapsed):
 		var newBomb = vertBombScene.instance()
 		newBomb.position.x = currentSweepX
 		add_child(newBomb)
+		
 		
 		# X sweep interval = 20
 		# TODO: make a constant
@@ -181,9 +178,11 @@ func doRandomSpawnForMiddlePulse(timeElapsed):
 		var newBombL = vertBombScene.instance()
 		newBombL.position.x = x1
 		add_child(newBombL)
+		newBombL.owner = self
 
 		var newBombR = vertBombScene.instance()
 		newBombR.position.x = x2
 		add_child(newBombR)
+		newBombR.owner = self
 
 		lastSpawn = timeElapsed

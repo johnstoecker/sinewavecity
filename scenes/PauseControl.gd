@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 var can_show: = true
@@ -11,20 +11,15 @@ var exit
 var buddy
 
 func _ready():
-	newgame = $Control/VBoxContainer/NewGame
-	newgame.connect("pressed", self, "_on_new_game_pressed")
-	loadgame = $Control/VBoxContainer/Levels
-	loadgame.connect("pressed", self, "_on_leves_pressed")
-	about = $Control/VBoxContainer/Settings
-	about.connect("pressed", self, "_on_settings_pressed")
-	exit = $Control/VBoxContainer/Exit
+	newgame = $VBoxContainer/Resume
+	newgame.connect("pressed", self, "_on_resume_pressed")
+	exit = $VBoxContainer/Exit
 	exit.connect("pressed", self, "_on_exit_pressed")
-	$Control/VBoxContainer/NewGame.grab_focus()
 #	allow main scene to process even when "paused"
 	pause_mode = Node.PAUSE_MODE_PROCESS
+	
 
-func _on_new_game_pressed():
-	print("new game press")
+func _on_resume_pressed():
 	get_owner().saveLevel(1)
 	get_owner().startGame()
 
@@ -37,3 +32,17 @@ func _on_settings_pressed():
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+func pause():
+	get_tree().paused = true
+	$VBoxContainer/Resume.grab_focus()
+	visible = true
+	
+func unpause():
+	get_tree().paused = false
+	visible = false
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_parent().togglePause()
+

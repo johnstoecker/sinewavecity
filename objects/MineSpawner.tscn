@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://objects/MineSpawner.gd" type="Script" id=1]
 [ext_resource path="res://resources/sprites/images/spr_bomb_5.png" type="Texture" id=2]
@@ -9,20 +9,74 @@
 [ext_resource path="res://resources/sprites/images/spr_bomb_6.png" type="Texture" id=7]
 [ext_resource path="res://resources/sprites/images/spr_bomb_0.png" type="Texture" id=8]
 [ext_resource path="res://resources/sprites/images/spr_bomb_3.png" type="Texture" id=9]
+[ext_resource path="res://resources/sprites/images/purple_bomb.png" type="Texture" id=10]
+[ext_resource path="res://resources/sprites/images/spr_bomb_explode_2.png" type="Texture" id=11]
+[ext_resource path="res://resources/sprites/images/spr_bomb_explode_3.png" type="Texture" id=12]
+[ext_resource path="res://resources/sprites/images/spr_bomb_explode_4.png" type="Texture" id=13]
+[ext_resource path="res://resources/sprites/images/spr_bomb_explode_5.png" type="Texture" id=14]
+[ext_resource path="res://resources/sprites/images/spr_bomb_explode_6.png" type="Texture" id=15]
+[ext_resource path="res://resources/sprites/images/spr_bomb_explode_1.png" type="Texture" id=16]
+[ext_resource path="res://resources/sprites/images/spr_bomb_explode_0.png" type="Texture" id=17]
+[ext_resource path="res://resources/sprites/images/spr_bomb_explode_7.png" type="Texture" id=18]
+[ext_resource path="res://resources/sprites/images/spr_bomb_quarter_6.png" type="Texture" id=19]
+[ext_resource path="res://resources/sprites/images/spr_bomb_half_6.png" type="Texture" id=20]
+[ext_resource path="res://resources/sprites/images/spr_bomb_half_7.png" type="Texture" id=21]
+[ext_resource path="res://resources/sprites/images/spr_bomb_quarter_2.png" type="Texture" id=22]
+[ext_resource path="res://resources/sprites/images/spr_bomb_quarter_3.png" type="Texture" id=23]
+[ext_resource path="res://resources/sprites/images/spr_bomb_quarter_0.png" type="Texture" id=24]
+[ext_resource path="res://resources/sprites/images/spr_bomb_quarter_5.png" type="Texture" id=25]
+[ext_resource path="res://resources/sprites/images/spr_bomb_half_2.png" type="Texture" id=26]
+[ext_resource path="res://resources/sprites/images/spr_bomb_half_1.png" type="Texture" id=27]
+[ext_resource path="res://resources/sprites/images/spr_bomb_quarter_7.png" type="Texture" id=28]
+[ext_resource path="res://resources/sprites/images/spr_bomb_half_3.png" type="Texture" id=29]
+[ext_resource path="res://resources/sprites/images/spr_bomb_half_4.png" type="Texture" id=30]
+[ext_resource path="res://resources/sprites/images/spr_bomb_half_0.png" type="Texture" id=31]
+[ext_resource path="res://resources/sprites/images/spr_bomb_quarter_4.png" type="Texture" id=32]
+[ext_resource path="res://resources/sprites/images/spr_bomb_half_5.png" type="Texture" id=33]
+[ext_resource path="res://resources/sprites/images/spr_bomb_quarter_1.png" type="Texture" id=34]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "explosion",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 34 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 32 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "halfSprite",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "fullSprite",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[node name="MineSpawner" type="KinematicBody2D"]
+[node name="MineSpawner" type="Area2D"]
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 2 )
 frames = SubResource( 1 )
+animation = "halfSprite"
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 10 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 25, 25, -25, 25, -25, -25, 25, -25 )
+
+[node name="FullSprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 31 )
