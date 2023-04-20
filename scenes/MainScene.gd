@@ -27,13 +27,14 @@ func getDataFromCookies():
 	
 	return result
 
-func startGame():
+func starLevel(level):
 	print("starting game....")
 	inGame = true
 	$MainMenu.visible = false
+	$LevelsMenu.visible = false
 #	get_tree().change_scene("res://GameScene.tscn")
 	$GameScene.show()
-	$GameScene.start_game()
+	$GameScene.start_level(level)
 
 func showMainMenu():
 	$GameScene.stop()
@@ -43,6 +44,16 @@ func showMainMenu():
 	$GameScene.visible = false
 	$MainMenu.visible = true
 	$MainMenu/Control/VBoxContainer/NewGame.grab_focus()
+
+func showLevelsMenu():
+	print("showing levels menu")
+	$GameScene.stop()
+	$Opacity.visible = false
+	$MainMenu.visible = false
+	inGame = false
+	$GameScene.visible = false
+	$LevelsMenu.visible = true
+	$LevelsMenu/Control/VBoxContainer/Level1.grab_focus()
 
 func saveLevel(value):
 	data["current_level"] = value

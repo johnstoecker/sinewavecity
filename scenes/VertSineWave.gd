@@ -79,8 +79,9 @@ func fireRailGun():
 		for i in 12:
 			var newRailGunner = railGunnerScene.instance()
 			newRailGunner.setHorizontal(true)
-			newRailGunner.position.x = position.x + currentWaveWidth*(i-6)
-			newRailGunner.position.y = position.y
+#			TODO: make not a constant
+			newRailGunner.position.x = position.x - 500
+			newRailGunner.position.y = position.y + currentWaveWidth*(i-6)
 			newRailGunner.rotate(PI / 2)
 			get_parent().add_child(newRailGunner)
 

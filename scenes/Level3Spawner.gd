@@ -33,7 +33,7 @@ var mineSpawnerScene = preload("res://objects/MineSpawner.tscn")
 var levelData = [
 	{ "ends": 10, "state": STATE_IDLE },
 	# a few mines
-	{ "ends": 30000, "state": MINE_SPAWN, "maxConcurrentMines": 1, "minConcurrentMines": 1, "spawnRate": 2000, "isHorizontal": false },
+	{ "ends": 30000, "state": MINE_SPAWN, "maxConcurrentMines": 1, "minConcurrentMines": 1, "spawnRate": 2000, "isHorizontal": true },
 	{ "ends": 100000, "state": STATE_IDLE }
 ]
 

@@ -18,10 +18,6 @@ func hit():
 # level 3: vertical sine wave, double mine spawner
 # level 4: spinny thing
 
-func start_game():
-	current_level = 3
-	start_level(3)
-
 func unpause():
 	print("unpausing")
 
@@ -35,6 +31,7 @@ func stop():
 	$LevelSpawner.stop()
 
 func start_level(level):
+	current_level = level
 	if level == 1:
 		$VertSineWave.visible = false
 	elif level ==2:

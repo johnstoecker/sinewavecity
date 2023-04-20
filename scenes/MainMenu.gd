@@ -14,7 +14,7 @@ func _ready():
 	newgame = $Control/VBoxContainer/NewGame
 	newgame.connect("pressed", self, "_on_new_game_pressed")
 	loadgame = $Control/VBoxContainer/Levels
-	loadgame.connect("pressed", self, "_on_leves_pressed")
+	loadgame.connect("pressed", self, "_on_levels_pressed")
 	about = $Control/VBoxContainer/Settings
 	about.connect("pressed", self, "_on_settings_pressed")
 	exit = $Control/VBoxContainer/Exit
@@ -25,11 +25,10 @@ func _ready():
 
 func _on_new_game_pressed():
 	print("new game press")
-	get_owner().saveLevel(1)
-	get_owner().startGame()
+	get_owner().starLevel(1)
 
 func _on_levels_pressed():
-	get_owner().startGame()
+	get_owner().showLevelsMenu()
 
 func _on_settings_pressed():
 	pass
